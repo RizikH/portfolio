@@ -5,14 +5,14 @@ import { useRevealer } from '@/app/hooks/useRevealer';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
-import { useRouter } from 'next/navigation';
+import { useTransitionNavigate } from '@/app/hooks/useTransition';
 
 gsap.registerPlugin(SplitText);
 
 export default function Home() {
   useRevealer();
   const { lenis } = useLenis();
-  const router = useRouter();
+  const transitionNavigate = useTransitionNavigate();
 
   const h1Ref = useRef(null);
   const pRef = useRef(null);
@@ -55,7 +55,6 @@ export default function Home() {
     });
   }, []);
 
-
   return (
     <>
       <div className="revealer"></div>
@@ -64,7 +63,7 @@ export default function Home() {
           <h1 ref={h1Ref}>I am Rizik Haddad</h1>
           <p ref={pRef}>Welcome To My Portfolio</p>
 
-          <button className='continueBtn' onClick={() => router.push('/about')}>
+          <button className="continueBtn" onClick={() => transitionNavigate('/about')}>
             Continue
           </button>
         </div>
