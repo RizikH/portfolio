@@ -34,13 +34,13 @@ export const LenisProvider = ({ children }: Props) => {
     useEffect(() => {
         const lenis = new Lenis({
             lerp: 0.1,
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Optional easing
-        } as LenisOptions); // ✅ fix: cast with LenisOptions
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        } as LenisOptions);
 
         lenisRef.current = lenis;
 
-        const raf = (time: number) => { // ✅ fix: add time type
+        const raf = (time: number) => {
             lenis.raf(time);
             requestAnimationFrame(raf);
         };
@@ -50,8 +50,6 @@ export const LenisProvider = ({ children }: Props) => {
         });
 
         requestAnimationFrame(raf);
-
-        // Extend window object to safely assign lenis
         window.lenis = lenis;
 
         return () => {

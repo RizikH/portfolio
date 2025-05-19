@@ -25,27 +25,27 @@ export default function About() {
     {
       title: '2011',
       description:
-        "This is where it all started. My parents took me to a concert that featured a gaming station bus. It was my first time playing Flash games — and my first time using the internet.",
+        "This is where it all began. My parents took me to a concert that had a gaming bus parked outside—basically a mobile arcade. That’s where I first played Flash games... and used the internet. I didn’t know it then, but that moment sparked everything.",
     },
     {
       title: '2016',
       description:
-        "By now, I was already hooked. I started teaching myself Visual Basic — not an easy feat. In my hometown, the internet wasn't nearly as accessible as in the United States. I had to pre-download videos and tutorials at approximately 675 KBps. It wasn't enjoyable, but I kept going.",
+        "I was completely hooked. I started teaching myself Visual Basic—hardly beginner-friendly. Internet access where I lived wasn’t great, so I had to pre-download tutorials at a painful 675 KBps. It was frustrating, but I loved every second of it.",
     },
     {
       title: '2018',
       description:
-        "With improved internet access, I was learning faster and falling deeper in love with programming. Then, my family moved to the United States. Learning a new language and culture wasn't easy — I had to adapt quickly. A month later, we relocated from New York to North Carolina, where I enrolled in community college to pursue an Associate of Science.",
+        "Things picked up. The internet got faster, and so did my learning. Then my family moved to the U.S. Adapting to a new country and learning English was overwhelming. A month in, we moved again—this time to North Carolina. I enrolled in community college to chase a degree in science.",
     },
     {
       title: '2022',
       description:
-        "After completing my prerequisites, I joined the Computer Science program at UNCG. There, I gained real-world programming experience — from Java and OOP to C and Assembly. I led a team of four to build a Shark Tank–style GitHub-inspired collaboration platform. It was my first time in a leadership role, and it taught me how to work with others, communicate effectively, and grow as a leader and developer.",
+        "After knocking out my prereqs, I joined the Computer Science program at UNCG. That’s where everything leveled up. I built real-world projects in Java, C, and Assembly, and even led a team on a GitHub-inspired collaboration platform. That experience taught me how to lead, communicate, and actually build things that mattered.",
     },
     {
       title: '2025',
       description:
-        "I graduated from UNCG with a Bachelor’s in Computer Science and a minor in Mathematics. Through all the challenges, I persevered and found my path. My passion for programming only deepened, and I discovered who I am and what I want to build.",
+        "I made it. Graduated from UNCG with a CS degree and a math minor. Looking back, every challenge along the way pushed me closer to who I am today—a developer who loves solving problems and building stuff that matters.",
     },
   ];
 
@@ -81,7 +81,7 @@ export default function About() {
   useEffect(() => {
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: 'top top',
+      start: 'top 0',
       end: 'bottom bottom',
       pin: '.canvas-wrapper',
       scrub: true,
@@ -120,6 +120,9 @@ export default function About() {
       <section style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <h1>After sticky section</h1>
       </section>
+
+
+
 
       {showScrollHint && (
         <div className="scroll-hint">
