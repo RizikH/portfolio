@@ -1,9 +1,10 @@
 'use client';
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { PerspectiveCamera } from '@react-three/drei';
-import { useRef, useMemo } from 'react';
+import { PerspectiveCamera, useGLTF } from '@react-three/drei';
+import { useRef, useEffect, useMemo } from 'react';
 import * as THREE from 'three';
+import gsap from 'gsap';
 import { useLenis } from '@/app/context/lenisContext';
 
 function FloatingBox() {

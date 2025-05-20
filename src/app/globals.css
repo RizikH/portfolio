@@ -104,7 +104,14 @@ a {
     height: 100svh;
     padding: 1em;
     text-align: center;
+    gap: 1em;
 }
+
+.header {
+    position: relative;
+    z-index: 2;
+}
+
 
 .home h1,
 .home p {
@@ -128,13 +135,13 @@ a {
     transform-origin: center top;
     background-color: var(--bg);
     pointer-events: none;
-    z-index: 2;
+    z-index: 10;
 }
 
 .continueBtn {
     display: inline-block;
     padding: 0.5em 1em;
-    background-color: var(--accent);
+    background-color: var(--fg);
     color: var(--bg);
     font-size: 1rem;
     font-weight: 600;
@@ -148,70 +155,8 @@ a {
 }
 
 .continueBtn:hover {
-    background-color: #ff8478;
+    background-color: var(--accent);
 }
-
-.scroll-hint {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    z-index: 50;
-    pointer-events: none;
-    opacity: 0.8;
-}
-
-.aboutStory {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    width: 100%;
-    justify-content: center;
-    border-bottom: 2px solid var(--border-color);
-    background-color: var(--panel-bg);
-    overflow: hidden;
-}
-
-
-.text-panels {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.text-slide {
-    height: 100vh;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bg);
-    color: var(--fg);
-    border: 2px solid var(--border-color);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
-    transition: background-color 0.3s ease;
-}
-
-.text-slide:hover {
-    background-color: var(--hover-bg);
-}
-
-.canvas-wrapper {
-    width: 70%;
-    height: 100%;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    background-color: var(--panel-bg);
-    border: 2px solid var(--border-color);
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-}
-
-
 
 
 /* ---------------------------
@@ -237,34 +182,14 @@ a {
     }
 
     .home,
-    .header,
-    .about {
+    .header
+    {
         padding: 2em 1em;
-    }
-
-    .about {
-        z-index: 10;
     }
 
     .continueBtn {
         font-size: 0.9rem;
         padding: 0.4em 0.8em;
-    }
-
-    .scroll-hint {
-        width: 40px;
-        height: 40px;
-    }
-
-    .aboutStory {
-        flex-direction: column;
-    }
-
-    .text-panels,
-    .canvas-wrapper {
-        width: 100%;
-        height: auto;
-        position: relative;
     }
 }
 
@@ -290,6 +215,27 @@ a {
         font-size: 1rem;
     }
 }
+
+
+@media (max-width: 480px) {
+
+    .continueBtn {
+        font-size: 0.8rem;
+        padding: 0.4em 0.6em;
+    }
+}
+
+@media (max-width: 360px) {
+    .nav a {
+        font-size: 1rem;
+    }
+
+    .continueBtn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 
 ::view-transition-old(root),
 ::view-transition-new(root) {

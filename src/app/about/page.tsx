@@ -14,6 +14,7 @@ import { ScrollTrigger } from 'gsap/all';
 import TextReveal from '@/components/animations/TextAnimation';
 import SplitText from "gsap/SplitText";
 import MyScene from '@/components/About/scene';
+import styles from '@/styles/about.module.css';
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
@@ -56,6 +57,7 @@ export default function About() {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLDivElement>(null);
 
   lottieRef.current?.stop();
 
@@ -83,7 +85,7 @@ export default function About() {
       trigger: containerRef.current,
       start: 'top 0',
       end: 'bottom bottom',
-      pin: '.canvas-wrapper',
+      pin: canvasRef.current,
       scrub: true,
     });
 
@@ -94,16 +96,16 @@ export default function About() {
     <>
       <div className="revealer"></div>
 
-      <section className="about">
+      <section className={styles.about}>
         <TextReveal delay={0.2}>
           <h1>Let me start with a little story</h1>
         </TextReveal>
       </section>
 
-      <section className="aboutStory" ref={containerRef}>
-        <div className="text-panels">
+      <section className={styles.aboutStory} ref={containerRef}>
+        <div className={styles.textPanels}>
           {panels.map((panel, index) => (
-            <section className="text-slide" key={index}>
+            <section className={styles.textSlide} key={index}>
               <TextReveal delay={0.2}>
                 <h2>{panel.title}</h2>
                 <p>{panel.description}</p>
@@ -112,7 +114,7 @@ export default function About() {
           ))}
         </div>
 
-        <div className="canvas-wrapper">
+        <div className={styles.canvasWrapper} ref={canvasRef}>
           <MyScene />
         </div>
       </section>
