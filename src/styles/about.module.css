@@ -122,10 +122,22 @@
     flex: 1;
 }
 
+.leftText {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 .skillsWrapper {
     display: flex;
+    flex-direction: column;
+}
+
+.skillsList {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
     flex-wrap: wrap;
-    max-height: 100%;
 }
 
 .skills {
@@ -134,10 +146,12 @@
     font-size: 0.85rem;
     font-weight: 500;
     color: rgb(102, 102, 102);
-    padding: 0.5rem 1rem;
+    padding: 0.9rem 1rem;
     background: rgba(153, 153, 153, 0.15);
     border-radius: 4px;
     text-align: center;
+    align-self: center;
+    white-space: nowrap;
 }
 
 .paragraphs {
@@ -336,6 +350,12 @@
 }
 
 
+.lineAnim {
+    display: table-column-group;
+    overflow: hidden;
+    transform: translateY(100%);
+    will-change: transform;
+}
 
 
 @keyframes rainbow-glow {
@@ -360,6 +380,7 @@
 --------------------------- */
 
 @media (max-width: 768px) {
+
     .header,
     .about {
         padding: 2em 1em;
@@ -374,7 +395,7 @@
         padding: 0.4em 0.8em;
     }
 
-    .scroll-hint {
+    .scrollHint {
         width: 40px;
         height: 40px;
     }
@@ -444,7 +465,7 @@
 }
 
 @media (max-width: 360px) {
-    .scroll-hint {
+    .scrollHint {
         display: none;
     }
 }

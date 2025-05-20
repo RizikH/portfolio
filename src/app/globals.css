@@ -158,6 +158,18 @@ a {
     background-color: var(--accent);
 }
 
+.lineAnim {
+  transform: translateY(100%);
+  will-change: transform;
+  white-space: pre-wrap;
+  word-break: break-word; /* or keep-all if you don't want mid-word breaks */
+  display: block;
+}
+
+.lineAnim {
+  overflow-wrap: anywhere;
+}
+
 
 /* ---------------------------
    ✅ Responsive Design 
@@ -182,8 +194,7 @@ a {
     }
 
     .home,
-    .header
-    {
+    .header {
         padding: 2em 1em;
     }
 

@@ -15,6 +15,7 @@ import TextReveal from '@/components/animations/TextAnimation';
 import SplitText from "gsap/SplitText";
 import MyScene from '@/components/About/scene';
 import styles from '@/styles/about.module.css';
+import FadeAnimation from '@/components/animations/FadeAnimation';
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
@@ -26,12 +27,12 @@ export default function About() {
     {
       title: '2011',
       description:
-        "This is where it all began. My parents took me to a concert that had a gaming bus parked outside—basically a mobile arcade. That’s where I first played Flash games... and used the internet. I didn’t know it then, but that moment sparked everything.",
+        "This is where it all began. My parents took me to a concert that had a gaming bus parked outside—basically a mobile arcade. That's where I first played Flash games... and used the internet. I didn’t know it then, but that moment sparked everything.",
     },
     {
       title: '2016',
       description:
-        "I was completely hooked. I started teaching myself Visual Basic—hardly beginner-friendly. Internet access where I lived wasn’t great, so I had to pre-download tutorials at a painful 675 KBps. It was frustrating, but I loved every second of it.",
+        "I was completely hooked. I started teaching myself Visual Basic. Internet access where I lived wasn’t great, so I had to pre-download tutorials at a painful 675 KBps. It was frustrating, but I loved every second of it.",
     },
     {
       title: '2018',
@@ -41,12 +42,12 @@ export default function About() {
     {
       title: '2022',
       description:
-        "After knocking out my prereqs, I joined the Computer Science program at UNCG. That’s where everything leveled up. I built real-world projects in Java, C, and Assembly, and even led a team on a GitHub-inspired collaboration platform. That experience taught me how to lead, communicate, and actually build things that mattered.",
+        "After knocking out my prereqs, I joined the Computer Science program at UNCG. That's where everything leveled up. I built real-world projects in Java, C, and Assembly, and even led a team on a GitHub-inspired collaboration platform. That experience taught me how to lead, communicate, and actually build things that mattered.",
     },
     {
       title: '2025',
       description:
-        "I made it. Graduated from UNCG with a CS degree and a math minor. Looking back, every challenge along the way pushed me closer to who I am today—a developer who loves solving problems and building stuff that matters.",
+        "I made it. Graduated from UNCG with a CS degree and a math minor. Looking back, every challenge along the way pushed me closer to who I am today. A developer who loves solving problems and building stuff that matters.",
     },
   ];
 
@@ -92,6 +93,13 @@ export default function About() {
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
 
+  useEffect(() => {
+
+    ScrollTrigger.create({
+
+    })
+  }, []);
+
   return (
     <>
       <div className="revealer"></div>
@@ -106,10 +114,10 @@ export default function About() {
         <div className={styles.textPanels}>
           {panels.map((panel, index) => (
             <section className={styles.textSlide} key={index}>
-              <TextReveal delay={0.2}>
+              <FadeAnimation>
                 <h2>{panel.title}</h2>
-                <p>{panel.description}</p>
-              </TextReveal>
+                <p>{panel.description} </p>
+              </FadeAnimation>
             </section>
           ))}
         </div>
@@ -119,15 +127,82 @@ export default function About() {
         </div>
       </section>
 
-      <section style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <h1>After sticky section</h1>
+      <section className={styles.aboutme}>
+        <section className={styles.aboutmeHeader}>
+          <h1>About Me</h1>
+          <div className={styles.divider}></div>
+          <p>Over the past few years I&apos;ve dabaled in a bit of everything, from Assymbly and java to JavaScript and PHP.</p>
+        </section>
+        <section className={styles.aboutmeContent}>
+          <section className={styles.left}>
+            <FadeAnimation>
+              <h2>Current Focus</h2>
+              <section className={styles.leftText}>
+                <p>
+                  Lately, I&apos;ve been diving deep into React.js, Next.js, and React Three Fiber to craft visually rich, 3D-enhanced web experiences.
+                  There&apos;s always more to learn and I&apos;m here for it.
+                </p>
+
+                <p>
+                  My main interest lies in Full-Stack development. I&apos;m endlessly curious and driven to understand the fine details behind how things work.
+                  I&apos;m the kind of person who will spend every day learning, exploring breakthroughs, and refining best practices because there&apos;s beauty in evolution.
+                </p>
+
+                <p>
+                  I&apos;m currently seeking full-time Software Development opportunities where I can apply my skills, share my curiosity, and grow through collaboration.
+                  I&apos;m excited to learn, build, and make something that matters.
+                </p>
+              </section>
+            </FadeAnimation>
+          </section>
+          <section className={styles.right}>
+            <section className={styles.SkillsWrapper}>
+              <section className={styles.skillsSection}>
+                <FadeAnimation>
+                  <h2>Core Skills</h2>
+                  <section className={styles.skillsList}>
+                    <div className={styles.skills}>JavaScript</div>
+                    <div className={styles.skills}>TypeScript</div>
+                    <div className={styles.skills}>React.js</div>
+                    <div className={styles.skills}>Next.Js</div>
+                    <div className={styles.skills}>Node.js</div>
+                    <div className={styles.skills}>Express.js</div>
+                    <div className={styles.skills}>Java</div>
+                    <div className={styles.skills}>Python</div>
+                    <div className={styles.skills}>C</div>
+                    <div className={styles.skills}>RESTful APIs</div>
+                    <div className={styles.skills}>MVC Architecture</div>
+                    <div className={styles.skills}>Git</div>
+                    <div className={styles.skills}>GitHub</div>
+                    <div className={styles.skills}>Docker</div>
+                  </section>
+                </FadeAnimation>
+              </section>
+              <section className={styles.skillsSection}>
+                <FadeAnimation>
+                  <h2>Additional Skills</h2>
+                  <section className={styles.skillsList}>
+                    <div className={styles.skills}>C++</div>
+                    <div className={styles.skills}>Assembly (x86)</div>
+                    <div className={styles.skills}>Firebase Realtime Database</div>
+                    <div className={styles.skills}>Laravel</div>
+                    <div className={styles.skills}>React Three Fiber (R3F)</div>
+                    <div className={styles.skills}>Multithreading & Concurrency</div>
+                  </section>
+                </FadeAnimation>
+              </section>
+              <section className={styles.skillsSection}></section>
+            </section>
+          </section>
+        </section>
+
       </section>
 
 
 
 
       {showScrollHint && (
-        <div className="scroll-hint">
+        <div className={styles.scrollHint}>
           <Lottie
             lottieRef={lottieRef}
             animationData={scrollAnimation}
