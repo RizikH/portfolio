@@ -11,17 +11,19 @@ const Lottie = dynamic(() => import('lottie-react').then(mod => mod.default), { 
 import type { LottieRefCurrentProps } from 'lottie-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import TextReveal from '@/components/animations/TextAnimation';
+//import TextReveal from '@/components/animations/TextAnimation';
 import SplitText from "gsap/SplitText";
+import ScrambleTextPlugin from 'gsap/ScrambleTextPlugin';
 import MyScene from '@/components/About/scene';
 import styles from '@/styles/about.module.css';
 import FadeAnimation from '@/components/animations/FadeAnimation';
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrambleTextPlugin);
 
 export default function About() {
-  useRevealer();
+  const revealed = useRevealer();
 
   const panels = [
     {
@@ -59,6 +61,7 @@ export default function About() {
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
 
   lottieRef.current?.stop();
 
@@ -100,14 +103,29 @@ export default function About() {
     })
   }, []);
 
+  const tl = gsap.timeline({ defaults: { duration: 2, ease: "none" } });
+
+  useEffect(() => {
+    if (!textRef.current) return;
+
+    console.log(textRef.current.textContent);
+
+    ScrollTrigger.create({
+      trigger: textRef.current,
+      start: "top 80%",
+      onEnter: () => {
+        tl.to(textRef.current, { duration: 4, scrambleText: { text: textRef.current?.textContent ?? '', chars: "lowerCase", revealDelay: 2, speed: 0.3 }, ease: "none" }); {
+        }
+      }
+    });
+  }, []);
+
+
   return (
     <>
-      <div className="revealer"></div>
-
+      <div className={`revealer ${revealed ? 'revealer--hidden' : ''}`}></div>
       <section className={styles.about}>
-        <TextReveal delay={0.2}>
-          <h1>Let me start with a little story</h1>
-        </TextReveal>
+        <h1 ref={textRef}>Let me start with a little story</h1>
       </section>
 
       <section className={styles.aboutStory} ref={containerRef}>

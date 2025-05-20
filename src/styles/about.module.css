@@ -53,6 +53,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     word-break: normal;
     overflow-wrap: break-word;
     hyphens: auto;
@@ -67,6 +68,14 @@
 .textSlide p {
     max-width: 45ch;
     margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+.textSlide h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--accent-light);
 }
 
 .textSlide:hover {
@@ -128,6 +137,13 @@
     gap: 1em;
 }
 
+.leftText p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
 .skillsWrapper {
     display: flex;
     flex-direction: column;
@@ -145,13 +161,21 @@
     margin-right: 1rem;
     font-size: 0.85rem;
     font-weight: 500;
-    color: rgb(102, 102, 102);
+    color: var(--accent-light);
     padding: 0.9rem 1rem;
     background: rgba(153, 153, 153, 0.15);
     border-radius: 4px;
     text-align: center;
     align-self: center;
     white-space: nowrap;
+}
+
+.skills:hover {
+    background: rgba(153, 153, 153, 0.25);
+    color: var(--accent);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    scale: 1.05;
+    transition: all 0.3s ease;
 }
 
 .paragraphs {
@@ -168,210 +192,12 @@
     border-radius: 2px;
 }
 
-
-.cards {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150vw;
-    height: 600px;
-    will-change: transform;
-}
-
-.card {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    left: 50%;
-    top: 50%;
-    transform-origin: center center;
-    margin-left: -250px;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    will-change: transform;
-    overflow: hidden;
-}
-
-.cardImg {
-    position: relative;
-    overflow: hidden;
-    /* keeps zoom inside */
-    width: 100%;
-    height: 100%;
-    border-radius: 0.5em;
-}
-
-.cardImg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-
-.cardContent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(18, 18, 18, 0.7);
-    /* Semi-transparent dark background */
-    padding: 1em;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    /* Prevent blocking hover */
-}
-
-.cardContent p {
-    color: var(--fg);
-    font-family: "Helvetica Now Display", sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.4;
-    margin: 0;
-}
-
-
-.card:hover .cardImg {
-    transform: scale(1.15);
-    transition: all 1s ease;
-}
-
-
-.stepCounter {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    margin: 2em;
-}
-
-.counterTitle,
-.count {
-    position: relative;
-    width: 1200px;
-    height: 150px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    overflow: hidden;
-}
-
-.count {
-    position: relative;
-    top: -10px;
-}
-
-.countContainer {
-    position: relative;
-    transform: translateY(150px);
-    will-change: transform;
-}
-
-.stepCounter h1 {
-    width: 100%;
-    position: relative;
-    color: #fff;
-    text-transform: uppercase;
-    font-family: "PP Monument Extended";
-    font-weight: 900;
-    font-size: 150px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    will-change: transform;
-}
-
-.empty {
-    opacity: 0;
-}
-
-.steps {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.card :hover {
-    transform: scale(1.05);
-    transition: all 1s ease;
-}
-
-
-.card .rainbow-glow {
-    animation: none;
-}
-
-.rainbowGlow {
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -4px;
-    z-index: 0;
-    border-radius: 1em;
-    background: linear-gradient(45deg,
-            #ff007a,
-            #ff6600,
-            #ffee00,
-            #00ff90,
-            #00c3ff,
-            #cc00ff,
-            #ff007a);
-    background-size: 400% 400%;
-    filter: blur(12px);
-    opacity: 0;
-    pointer-events: none;
-    transition:
-        opacity 0.3s ease-in-out,
-        filter 0.3s ease-in-out;
-}
-
-.card:hover .rainbow-glow {
-    opacity: 1;
-    animation: rainbow-glow 5s linear infinite;
-    filter: blur(12px);
-}
-
-.card:not(:hover) .rainbow-glow {
-    opacity: 0;
-    animation: none;
-    filter: blur(4px);
-
-}
-
-.card:hover .cardContent {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.cardImg {
-    transition: transform 0.4s ease;
-}
-
-
 .lineAnim {
     display: table-column-group;
     overflow: hidden;
     transform: translateY(100%);
     will-change: transform;
 }
-
-
-@keyframes rainbow-glow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
 
 
 
@@ -467,29 +293,5 @@
 @media (max-width: 360px) {
     .scrollHint {
         display: none;
-    }
-}
-
-@media (max-width: 900px) {
-    .counterTitle {
-        height: 30px;
-    }
-
-    .counterTitle h1 {
-        font-size: 30px;
-    }
-
-    .count {
-        top: 0px;
-        left: -10px;
-    }
-
-    .cards {
-        top: 27.5%;
-    }
-
-    .card {
-        width: 375px;
-        height: 500px;
     }
 }
