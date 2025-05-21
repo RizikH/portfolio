@@ -10,20 +10,20 @@ import { useLenis } from '@/app/context/lenisContext';
 const Lottie = dynamic(() => import('lottie-react').then(mod => mod.default), { ssr: false });
 import type { LottieRefCurrentProps } from 'lottie-react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
-//import TextReveal from '@/components/animations/TextAnimation';
-import SplitText from "gsap/SplitText";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrambleTextPlugin from 'gsap/ScrambleTextPlugin';
+import { useGSAP } from '@gsap/react';
+
 import MyScene from '@/components/About/scene';
 import styles from '@/styles/about.module.css';
 import FadeAnimation from '@/components/animations/FadeAnimation';
+import { SplitText } from 'gsap/SplitText';
 
-gsap.registerPlugin(SplitText);
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(ScrambleTextPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin, SplitText);
 
 export default function About() {
   const revealed = useRevealer();
+  const { lenis } = useLenis();
 
   const panels = [
     {
@@ -53,15 +53,14 @@ export default function About() {
     },
   ];
 
-
-  const { lenis } = useLenis();
-
   const [showScrollHint, setShowScrollHint] = useState(true);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
+  const stickyContainerRef = useRef<HTMLDivElement>(null);
 
   lottieRef.current?.stop();
 
@@ -84,7 +83,8 @@ export default function About() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lenis]);
 
-  useEffect(() => {
+  // 💡 useGSAP for ScrollTrigger pinning
+  useGSAP(() => {
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top 0',
@@ -92,33 +92,65 @@ export default function About() {
       pin: canvasRef.current,
       scrub: true,
     });
+  }, { scope: containerRef });
 
-    return () => ScrollTrigger.getAll().forEach(t => t.kill());
-  }, []);
+  // 💡 useGSAP for scrambleText animation
+  useGSAP(() => {
+    if (textRef.current) {
+      gsap.to(textRef.current, {
+        duration: 4,
+        scrambleText: {
+          text: textRef.current.textContent ?? '',
+          chars: 'lowerCase',
+          revealDelay: 2,
+          speed: 0.3,
+        },
+        scrollTrigger: {
+          trigger: textRef.current,
+          start: 'top 80%',
+        },
+        ease: 'none',
+      });
+    }
+  }, { scope: textRef });
 
-  useEffect(() => {
 
-    ScrollTrigger.create({
+  useGSAP(() => {
+    if (stickyRef.current && stickyContainerRef.current) {
+      const scrollAmount = window.innerHeight * 10; // 3vh in pixels
 
-    })
-  }, []);
+      // Split the text inside the pinned container into words
+      const split = new SplitText(stickyContainerRef.current, {
+        type: 'words'
+      });
 
-  const tl = gsap.timeline({ defaults: { duration: 2, ease: "none" } });
-
-  useEffect(() => {
-    if (!textRef.current) return;
-
-    console.log(textRef.current.textContent);
-
-    ScrollTrigger.create({
-      trigger: textRef.current,
-      start: "top 80%",
-      onEnter: () => {
-        tl.to(textRef.current, { duration: 4, scrambleText: { text: textRef.current?.textContent ?? '', chars: "lowerCase", revealDelay: 2, speed: 0.3 }, ease: "none" }); {
+      // Animate the color of each word during scroll
+      gsap.fromTo(
+        split.words,
+        {
+          color: 'white'
+        }, // starting color (or whatever it currently is)
+        {
+          color: 'black',
+          stagger: 1,
+          scrollTrigger: {
+            trigger: stickyRef.current,
+            start: 'top top',
+            end: `+=${scrollAmount}`,
+            pin: stickyContainerRef.current,
+            scrub: true,
+            markers: true,
+            pinSpacing: true,
+          }
         }
-      }
-    });
-  }, []);
+      );
+
+      // Clean up SplitText DOM manipulation on unmount
+      return () => split.revert();
+    }
+  }, { scope: stickyRef });
+
+
 
 
   return (
@@ -217,6 +249,16 @@ export default function About() {
       </section>
 
 
+      <section style={{ width: '100vw', overflow: 'hidden' }} ref={stickyRef}>
+        <section style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', textAlign: 'center', height: '100vh', width: '100vw' }} ref={stickyContainerRef}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+        </section>
+      </section>
+
+      <section style={{ height: '100vh', width: '100vw', backgroundColor: 'black' }}></section>
 
 
       {showScrollHint && (

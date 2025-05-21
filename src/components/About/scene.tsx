@@ -74,6 +74,7 @@ function FloatingBox() {
       }
     });
   });
+  
 
   return (
     <group ref={groupRef}>
