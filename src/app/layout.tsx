@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav/nav";
 import { ViewTransitions } from "next-view-transitions";
 import { LenisProvider } from "@/app/context/lenisContext";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +28,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ViewTransitions>
       <html lang="en">
-        <script src="//code.tidio.co/qscpfop7tuw9vaseqly4eopii2xudxpj.js" async></script>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <Script
+            src="//code.tidio.co/qscpfop7tuw9vaseqly4eopii2xudxpj.js"
+            strategy="afterInteractive"
+          />
           <LenisProvider>
             <Nav />
             {children}
