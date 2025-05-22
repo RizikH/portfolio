@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import type { LottieRefCurrentProps } from 'lottie-react';
 import styles from '@/styles/components/about.module.css';
-import scrollAnimation from '@/components/assets/scroll.json';
+import scrollAnimation from '@/components/Assets/scroll.json';
 
 import Hero from '@/components/Hero/Hero';
 import About from '@/components/About/About';
