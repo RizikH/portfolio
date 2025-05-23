@@ -53,10 +53,16 @@ export default function Hero() {
         const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
         tl.fromTo(
-            imageContainerRef.current,
-            { opacity: 0 },
-            { opacity: 1, delay: 2, duration: 1.1 }
+            heroRef.current,
+            { opacity: 0, },
+            { opacity: 1, duration: 0.2, ease: 'power2.out' }
         )
+            .fromTo(
+                imageContainerRef.current,
+                { opacity: 0 },
+                { opacity: 1, delay: 2 },
+                '-=0.5'
+            )
             .fromTo(
                 imageRef.current,
                 { x: 0, y: 0 },
