@@ -88,7 +88,11 @@ export default function Hero() {
                             <h4>{heroContent.location}</h4>
                         </div>
                         <p>{heroContent.description}</p>
-                        <button>My resume</button>
+                        <button>
+                            <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF" className="hover:text-[#00ff90] transition-colors">
+                                My Resume
+                            </a>
+                        </button>
                     </div >
 
                     <div ref={imageContainerRef}>

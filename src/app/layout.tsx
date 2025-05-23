@@ -22,7 +22,9 @@ export const metadata: Metadata = {
   title: "RizikH",
   description: "Full Stack Developer Portfolio",
   icons: {
-    icon: "/favicon-custom.ico",
+    icon: "/icons/favicon.ico",
+    shortcut: "/icons/favicon-32x32.png",
+    apple: "/icons/apple-touch-icon.png",
   },
 };
 
