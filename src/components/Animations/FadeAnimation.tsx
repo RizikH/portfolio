@@ -37,7 +37,7 @@ export default function FadeInOnScroll({
           delay,
           scrollTrigger: {
             trigger: ref.current,
-            start: 'top 75%',
+            start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
         }

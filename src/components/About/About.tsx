@@ -10,6 +10,7 @@ import { SplitText } from 'gsap/SplitText';
 import styles from '@/styles/components/about.module.css';
 import FadeAnimation from '@/components/Animations/FadeAnimation';
 
+
 import {
   aboutHeader,
   aboutFocus,
@@ -74,7 +75,7 @@ export default function About() {
       stagger: 0.1,
       scrollTrigger: {
         trigger: additionalSkillsRef.current,
-        start: 'top 80%',
+        start: 'top 90%',
         toggleActions: 'play none none reverse',
       },
     });

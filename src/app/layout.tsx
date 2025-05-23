@@ -6,6 +6,7 @@ import { ViewTransitions } from "next-view-transitions";
 import LenisProvider from "@/components/Context/lenisContext";
 import Script from "next/script";
 import Footer from "@/components/Footer/Footer";
+import styles from "@/styles/Layout/layout.module.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,9 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             strategy="afterInteractive"
           />
           <LenisProvider>
-            <Navbar />
-            {children}
-            <Footer />
+            <main className={styles.layout}>
+              <Navbar />
+              {children}
+              <Footer />
+            </main>
           </LenisProvider>
         </body>
       </html>

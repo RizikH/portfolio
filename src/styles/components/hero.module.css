@@ -1,0 +1,142 @@
+.hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr minmax(min-content, 35%);
+}
+
+.heroText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    gap: 1em;
+    max-width: 80%;
+}
+
+.heroText h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.125;
+    letter-spacing: -0.04rem;
+}
+
+.heroText h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.125;
+    letter-spacing: -0.05rem;
+}
+
+.heroText p {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: var(--muted);
+    line-height: 1.5;
+    letter-spacing: -0.03rem;
+}
+
+.heroText button {
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    font-size: var(--font-2xl);
+    font-weight: 500;
+    box-shadow: 0 0 2px 2px var(--accent-light);
+}
+
+.heroImage {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    width: 512px;
+    height: 512px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111821;
+    border: 3px solid var(--accent-light);
+    overflow: hidden;
+}
+.extra{
+    background-color: var(--accent-light);
+}
+
+.heroImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: rotate(10deg);
+    scale: 1.15;
+}
+
+/* Scroll Hint */
+.scrollHint {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* ==== Responsive Hero ==== */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: auto;
+    }
+
+    .heroContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+    }
+
+    .heroImage {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 300px;
+        transform: none;
+    }
+
+    .heroImage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: none;
+    }
+
+    .heroText h2 {
+        font-size: 2rem;
+    }
+
+    .heroText h3 {
+        font-size: 1.5rem;
+    }
+
+    .heroText p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .heroText button {
+        font-size: 1.5rem;
+        padding: 0.5rem 1rem;
+    }
+}

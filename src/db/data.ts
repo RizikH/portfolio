@@ -38,3 +38,22 @@ export const additionalSkills = [
   "React Three Fiber (R3F)",
   "Multithreading & Concurrency",
 ];
+
+export const heroContent = {
+  title: "Hello, I'm Rizik Haddad",
+  location: "North Carolina, USA",
+  job: "Software Engineer",
+  focus: "Full-Stack Development",
+  image: "/images/hero.png",
+  description:
+    `
+    I'm a growing software engineer with a passion for full-stack development, 
+    3D web experiences, and emerging technology. I love learning and building things that have impact. 
+    My style is minimalistic yet elegant —with a touch of personality— and I believe in the beauty of constant evolution. 
+    I enjoy collaborating with others to create meaningful work and am currently seeking full-time opportunities in full-stack development.
+    `,
+  cta: {
+    text: "Check My Resume",
+    link: "/Docs/Resume.pdf",
+  },
+};

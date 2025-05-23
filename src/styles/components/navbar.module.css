@@ -1,21 +1,21 @@
 .nav {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    z-index: 10;
+    height: 4rem;
     width: 100%;
-    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    clip-path: inset(50% 0 50% 0);
 }
 
+
 .navLogo {
-    font-size: 2rem;
-    font-weight: 600;
     cursor: pointer;
     position: relative;
-    color: var(--fg);
+}
+.navLogo a{
+    font-size: 2rem;
 }
 
 .navLogo::after {
@@ -76,15 +76,19 @@
 
 .navItems {
     display: flex;
-    gap: 2rem;
+    gap: 6rem;
 }
 
 .navItem {
-    font-size: 1.25rem;
-    font-weight: 600;
     color: var(--accent-light);
     position: relative;
     cursor: pointer;
+}
+
+.navItem a {
+    font-size: 2rem;
+    font-weight: 600;
+    color: inherit;
 }
 
 .navItem::after {
@@ -113,6 +117,42 @@
     gap: 1rem;
     margin-top: 2rem;
     text-align: center;
+}
+
+.landingAnimation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none !important;
+}
+
+.line,
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    will-change: transform;
+}
+
+/* Line spans horizontally, centered by height */
+.line {
+    width: 0;
+    height: 0;
+    transform-origin: center;
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+/* Circle is centered on its midpoint */
+.circle {
+    width: 20px;
+    height: 20px;
+    background-color: var(--accent);
+    border-radius: 50%;
 }
 
 @media screen and (max-width: 768px) {
