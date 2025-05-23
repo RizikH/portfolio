@@ -116,7 +116,7 @@ const Navbar: React.FC = () => {
                   <Link to="contact" smooth duration={500} offset={-50} onClick={closeMenu}>Contact</Link>
                 </li>
                 <li className={styles.navItem}>
-                  <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Resume</a>
+                  <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>View Résumé</a>
                 </li>
               </ul>
 

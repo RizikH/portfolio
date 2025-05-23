@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold mb-2">Socials</h2>
+              <h2 className="text-2xl font-semibold mb-2">Links</h2>
               <ul className="space-y-2">
                 <li>
                   <a href="https://linkedin.com/in/rizik-haddad-075443266" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#00ff90] transition-colors">
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF" className="hover:text-[#00ff90] transition-colors">
-                    Resume
+                    View Résumé
                   </a>
                 </li>
               </ul>
