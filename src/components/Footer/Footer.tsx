@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
               <h2 className="text-2xl font-semibold mb-2">Pages</h2>
               <ul className="space-y-2">
                 <li>
-                  <Link to="about" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer">
+                  <Link to="home" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer">
                     Home
                   </Link>
                 </li>
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/Docs/resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF" className="hover:text-[#00ff90] transition-colors">
+                  <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF" className="hover:text-[#00ff90] transition-colors">
                     Resume
                   </a>
                 </li>

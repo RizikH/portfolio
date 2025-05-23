@@ -105,13 +105,6 @@ export default function Hero() {
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
-
             {showScrollHint && (
                 <div className={styles.scrollHint}>
                     <Lottie
