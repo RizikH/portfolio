@@ -18,6 +18,7 @@ export const coreSkills = [
   "TypeScript",
   "React.js",
   "Next.Js",
+  "GSAP",
   "Node.js",
   "Express.js",
   "Java",
@@ -32,9 +33,13 @@ export const coreSkills = [
 
 export const additionalSkills = [
   "C++",
+  "HTML5",
+  "CSS3",
+  "PHP",
   "Assembly (x86)",
-  "Firebase Realtime Database",
+  "Firebase Database",
   "Laravel",
+  "Three.js",
   "React Three Fiber (R3F)",
   "Multithreading & Concurrency",
 ];

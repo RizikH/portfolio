@@ -9,6 +9,8 @@ import {
     heroContent,
 }
     from '@/db/data';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 
 
@@ -18,6 +20,9 @@ export default function Hero() {
     const [showScrollHint, setShowScrollHint] = useState(true);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const lottieRef = useRef<LottieRefCurrentProps | null>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
+    const imageContainerRef = useRef<HTMLDivElement>(null);
+    const heroRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -41,10 +46,40 @@ export default function Hero() {
         }
     }, [showScrollHint]);
 
+
+    useGSAP(() => {
+        if (!imageContainerRef.current || !imageRef.current || !heroRef.current) return;
+
+        const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+
+        tl.fromTo(
+            imageContainerRef.current,
+            { opacity: 0 },
+            { opacity: 1, delay: 2, duration: 1.1 }
+        )
+            .fromTo(
+                imageRef.current,
+                { x: 0, y: 0 },
+                { x: -15, y: -15, duration: 0.4, ease: 'power2.inOut' },
+                '-=0.3'
+            )
+            .fromTo(
+                heroRef.current.querySelectorAll('h2, h3, h4, p, button'),
+                { y: 40, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    stagger: 0.2,
+                }
+            );
+    }, { scope: heroRef });
+
+
     return (
         <>
 
-            <section id='hero' className={styles.hero}>
+            <section id='hero' className={styles.hero} ref={heroRef}>
                 <div className={styles.heroContent}>
                     <div className={styles.heroText}>
                         <div className={styles.header}>
@@ -54,17 +89,19 @@ export default function Hero() {
                         </div>
                         <p>{heroContent.description}</p>
                         <button>My resume</button>
-                    </div>
+                    </div >
 
-                    <div className={`${styles.heroImage} ${styles.extra}`}></div>
-                    <div className={styles.heroImage}>
-                        <Image
-                            src={heroContent.image}
-                            alt="Hero Image"
-                            width={300}
-                            height={300}
-                            priority
-                        />
+                    <div ref={imageContainerRef}>
+                        <div className={`${styles.heroImage} ${styles.extra}`}></div>
+                        <div className={styles.heroImage} ref={imageRef}>
+                            <Image
+                                src={heroContent.image}
+                                alt="Hero Image"
+                                width={300}
+                                height={300}
+                                priority
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

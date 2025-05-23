@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
       <section ref={triggerRef} className="h-1 bg-transparent" />
       <footer
         ref={footerRef}
-        className="relative p-8 w-full min-h-[400px] bg-[#4E4E5A] text-white"
+        className="relative p-8 w-full min-h-[400px] text-white"
       >
         <div className="flex flex-col justify-between h-full max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 p-6 footer-item">

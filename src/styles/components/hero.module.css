@@ -27,30 +27,35 @@
 }
 
 .heroText h2 {
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: var(--font-xl);
     line-height: 1.125;
     letter-spacing: -0.04rem;
 }
 
 .heroText h3 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: var(--font-lg);
     line-height: 1.125;
     letter-spacing: -0.05rem;
 }
 
 .heroText p {
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-    color: var(--muted);
+    font-size: var(--font-md);
     line-height: 1.5;
     letter-spacing: -0.03rem;
+    color: var(--muted);
 }
 
 .heroText button {
     width: fit-content;
     padding: 0.5rem 1rem;
-    font-size: var(--font-2xl);
+    font-size: var(--font-xl);
     font-weight: 500;
     box-shadow: 0 0 2px 2px var(--accent-light);
+}
+.heroText button:hover {
+    background-color: var(--accent-light);
+    color: var(--bg);
+    box-shadow: 0 0 2px 2px var(--accent);
 }
 
 .heroImage {
@@ -58,17 +63,15 @@
     top: 50%;
     left: 80%;
     transform: translate(-50%, -50%) rotate(-10deg);
-    width: 512px;
-    height: 512px;
+    width: 400px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #111821;
-    border: 3px solid var(--accent-light);
+    box-shadow: 0 0 0 3px var(--accent-light);
+    border: none;
     overflow: hidden;
-}
-.extra{
-    background-color: var(--accent-light);
 }
 
 .heroImage img {
@@ -76,10 +79,9 @@
     height: 100%;
     object-fit: cover;
     transform: rotate(10deg);
-    scale: 1.15;
+    scale: 1.2;
 }
 
-/* Scroll Hint */
 .scrollHint {
     position: fixed;
     display: flex;
@@ -93,50 +95,64 @@
     opacity: 0.8;
 }
 
+.extra {
+    background-color: var(--accent-light);
+}
+
 /* ==== Responsive Hero ==== */
 @media screen and (max-width: 768px) {
     .hero {
         height: auto;
+        padding: 2rem 1rem;
     }
 
     .heroContent {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2em;
+        gap: 2rem;
+    }
+
+    .heroText h2,
+    .heroText h3,
+    .heroText p {
+        text-align: left;
     }
 
     .heroImage {
         position: relative;
-        top: 0;
-        left: 0;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 2rem;
         width: 300px;
         height: 300px;
-        transform: none;
     }
 
     .heroImage img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: none;
+        transform: none !important;
+        /* reset rotation and scaling */
     }
 
     .heroText h2 {
-        font-size: 2rem;
+        font-size: var(--font-xl);
     }
 
     .heroText h3 {
-        font-size: 1.5rem;
+        font-size: var(--font-lg);
     }
 
     .heroText p {
-        font-size: 1rem;
+        font-size: var(--font-base);
         line-height: 1.6;
     }
 
     .heroText button {
-        font-size: 1.5rem;
+        font-size: var(--font-md);
         padding: 0.5rem 1rem;
+    }
+
+    .extra {
+        display: none;
     }
 }
