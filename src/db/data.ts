@@ -49,7 +49,7 @@ export const heroContent = {
   location: "North Carolina, USA",
   job: "Software Engineer",
   focus: "Full-Stack Development",
-  image: "/images/hero.png",
+  image: "/Images/hero.png",
   description:
     `
     I'm a growing software engineer with a passion for full-stack development, 
@@ -59,6 +59,6 @@ export const heroContent = {
     `,
   cta: {
     text: "Check My Resume",
-    link: "/Docs/Resume.pdf",
+    link: "/Docs/Full-Stack-Resume.pdf",
   },
 };

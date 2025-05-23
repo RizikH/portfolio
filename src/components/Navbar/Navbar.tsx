@@ -116,14 +116,14 @@ const Navbar: React.FC = () => {
                   <Link to="contact" smooth duration={500} offset={-50} onClick={closeMenu}>Contact</Link>
                 </li>
                 <li className={styles.navItem}>
-                  <a href="/Docs/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Resume</a>
+                  <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Resume</a>
                 </li>
               </ul>
 
               <div className={styles.navSocials}>
-                <a href="https://github.com/yourusername" target="_blank" onClick={closeMenu}>GitHub</a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" onClick={closeMenu}>LinkedIn</a>
-                <a href="mailto:youremail@example.com" onClick={closeMenu}>Email</a>
+                <a href="https://github.com/RizikH" target="_blank" onClick={closeMenu}>GitHub</a>
+                <a href="https://linkedin.com/in/rizik-haddad-075443266" target="_blank" onClick={closeMenu}>LinkedIn</a>
+                <a href="mailto:rizig.haddad.rh@gmail.com" onClick={closeMenu}>Email</a>
               </div>
             </div>
           </>
@@ -139,7 +139,7 @@ const Navbar: React.FC = () => {
               <Link to="contact" smooth duration={500} offset={-50}>Contact</Link>
             </li>
             <li className={styles.navItem}>
-              <a href="/Docs/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+              <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
             </li>
           </ul>
         )}
