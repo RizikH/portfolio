@@ -1,3 +1,6 @@
+import ihiveImage from "../../public/Images/Projects/iHive/iHive-preview.jpeg"
+import porfolioImage from "../../public/Images/Projects/Portfolio/portfolio-preview.jpg"
+
 export const aboutHeader = {
   title: "About Me",
   description:
@@ -7,9 +10,9 @@ export const aboutHeader = {
 export const aboutFocus = {
   heading: "Current Focus",
   paragraphs: [
-    "Lately, I've been diving deep into React.js, Next.js, and React Three Fiber to craft visually rich, 3D-enhanced web experiences. There's always more to learn, and I'm here for it.",
-    "My main interest lies in full-stack development. I'm endlessly curious and driven to understand the fine details behind how things work. I'm the kind of person who will spend every day learning, exploring breakthroughs, and refining best practices, because there's beauty in evolution.",
-    "I'm currently seeking full-time software development opportunities where I can apply my skills, share my curiosity, and grow through collaboration. I'm excited to learn, build, and make something that matters.",
+    "Lately, I've been exploring React, Next.js, and React Three Fiber to build more visual and interactive experiences. There's always more to learn, and I enjoy the process.",
+    "I'm drawn to the full picture from how things look to how they work behind the scenes. I enjoy refining both the interface and the logic, and learning is a steady part of how I work.",
+    "I'm currently looking for a full-time role where I can apply what I know, and keep learning.",
   ],
 };
 
@@ -18,31 +21,25 @@ export const coreSkills = [
   "TypeScript",
   "React.js",
   "Next.js",
-  "GSAP",
   "Node.js",
   "Express.js",
   "Java",
-  "Python",
-  "C",
-  "RESTful APIs",
-  "MVC Architecture",
-  "Git",
+  "REST APIs",
   "GitHub",
   "Docker",
 ];
 
 export const additionalSkills = [
-  "C++",
+  "React Three Fiber",
+  "Three.js",
+  "Tailwind CSS",
+  "Python",
   "HTML5",
   "CSS3",
-  "PHP",
-  "Assembly (x86)",
-  "Firebase Database",
-  "Laravel",
-  "Three.js",
-  "React Three Fiber (R3F)",
-  "Multithreading & Concurrency",
+  "firebase",
+  "MVC",
 ];
+
 
 export const heroContent = {
   title: "Hello, I'm Rizik Haddad",
@@ -51,13 +48,48 @@ export const heroContent = {
   focus: "Full-Stack Development",
   image: "/Images/hero.png",
   description: `
-    I'm a software engineer with a passion for full-stack development, 
-    3D web experiences, and emerging technology. I love learning and building things that have impact. 
-    My style is minimalistic yet elegant — with a touch of personality — and I believe in the beauty of constant evolution. 
-    I enjoy collaborating with others to create meaningful work and am currently seeking full-time opportunities in full-stack development.
+    I create clean, purposeful digital experiences and enjoy building things that matter. Always evolving, always curious.
   `,
   cta: {
     text: "Check My Resume",
     link: "/Docs/Full-Stack-Resume.pdf",
   },
 };
+
+
+export const projectsData = {
+  Projects: [
+    {
+      name: "iHive",
+      image: ihiveImage,
+      stack: [
+        "TypeScript",
+        "Next.js2",
+        "React.js",
+        "AWS",
+        "Node.js",
+        "Supabase",
+      ],
+      description:
+        "iHive is a full-stack web application that connects entrepreneurs with investors through idea repositories, secure file sharing, real-time chat, and role-based collaboration.",
+      liveDemo: "https://ihive.vercel.app/",
+      sourceCode: "https://github.com/RizikH/iHive",
+    },
+    {
+      name: "Portfolio",
+      image: porfolioImage,
+      stack: [
+        "TypeScript",
+        "Next.js2",
+        "React.js",
+        "Tailwind CSS",
+        "GSAP",
+      ],
+      description:
+        "Built with React.js, Next.js, Tailwind CSS, and GSAP. Designed to deliver a minimalist yet elegant user experience, it showcases selected projects, skills, and background with smooth animations and responsive design.",
+      liveDemo: "",
+      sourceCode: "https://github.com/RizikH/Portfolio",
+    },
+  ],
+};
+

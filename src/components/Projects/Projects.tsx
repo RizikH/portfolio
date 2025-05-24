@@ -1,12 +1,21 @@
-import React, { } from 'react';
+"use client";
+import { projectsData } from "@/db/data";
+import React from "react";
+import styles from "@/styles/components/projects.module.css";
+import Project from "@/components/Projects/Project";
 
-export default function Projects() {
+type ProjectsProps = {};
 
+const Projects: React.FC<ProjectsProps> = () => {
     return (
-        <>
-            <div className="flex flex-col justify-center items-center h-screen w-full"
-                style={{ backgroundColor: 'var(--bg)' }}>
-                Projects Section Coming Soon</div>
-        </>
-    )
+        <div id="projects" className={`${styles.projects}`}>
+            <h2 className={`${styles.projectsTitle}`}>Selected Projects</h2>
+            <div className={`${styles.projectsContainer}`}>
+                {projectsData.Projects.map((project, i) => (
+                    <Project key={i} index={i} data={project} />
+                ))}
+            </div>
+        </div>
+    );
 };
+export default Projects;

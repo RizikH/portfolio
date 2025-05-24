@@ -25,6 +25,7 @@ export default function About() {
   const coreSkillsRef = useRef<HTMLDivElement>(null);
   const additionalSkillsRef = useRef<HTMLDivElement>(null);
 
+
   useGSAP(() => {
     gsap.fromTo(
       aboutMeRef.current,
@@ -32,11 +33,11 @@ export default function About() {
       {
         opacity: 0,
         y: -100,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: aboutMeRef.current,
-          start: 'bottom 50%',
-          toggleActions: 'play none none none',
+          start: 'bottom 20%',
+          toggleActions: 'play none none reverse',
           scrub: true,
         },
       }
@@ -47,6 +48,7 @@ export default function About() {
     if (!coreSkillsRef.current) return;
 
     const targets = coreSkillsRef.current.querySelectorAll<HTMLElement>('.' + styles.skills);
+    console.log(targets);
 
     gsap.from(targets, {
       opacity: 0,
@@ -66,7 +68,8 @@ export default function About() {
     if (!additionalSkillsRef.current) return;
 
     const targets = additionalSkillsRef.current.querySelectorAll<HTMLElement>('.' + styles.skills);
-
+    console.log(targets);
+    
     gsap.from(targets, {
       opacity: 0,
       x: -50,
@@ -111,7 +114,7 @@ export default function About() {
         </section>
 
         <section className={styles.right}>
-          <section className={styles.SkillsWrapper}>
+          <section className={styles.skillsWrapper}>
             <section className={styles.skillsSection}>
               <FadeAnimation>
                 <h2>Core Skills</h2>
@@ -130,7 +133,7 @@ export default function About() {
                 <h2>Additional Skills</h2>
                 <section className={styles.skillsList}>
                   {additionalSkills.map((skill, i) => (
-                    <div key={i} className={styles.skills}>
+                    <div key={i} className={`${styles.skills} ${styles.additionalSkills}`}>
                       {skill}
                     </div>
                   ))}

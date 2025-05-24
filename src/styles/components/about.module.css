@@ -21,7 +21,7 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    min-height: 100svh;
+    min-height: 90svh;
 }
 
 .aboutmeHeader {
@@ -69,6 +69,7 @@
 .skillsWrapper {
     display: flex;
     flex-direction: column;
+    gap: 2em;
 }
 
 .skillsList {
@@ -81,16 +82,17 @@
 .skills {
     margin-bottom: 1rem;
     margin-right: 1rem;
-    font-size: 0.85rem;
+    font-size: var(--font-base);
     font-weight: 500;
     color: var(--accent-light);
-    padding: 0.9rem 1rem;
+    padding: 0.7rem 1rem;
     background: rgba(153, 153, 153, 0.15);
     border-radius: 4px;
     text-align: center;
     align-self: center;
     white-space: nowrap;
 }
+
 
 .skills:hover {
     background: rgba(153, 153, 153, 0.25);

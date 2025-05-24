@@ -38,6 +38,9 @@ importers:
       react-scroll:
         specifier: ^1.9.3
         version: 1.9.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      tech-stack-icons:
+        specifier: ^2.1.0
+        version: 2.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       three:
         specifier: ^0.176.0
         version: 0.176.0
@@ -2151,6 +2154,12 @@ packages:
   tar@7.4.3:
     resolution: {integrity: sha512-5S7Va8hKfV7W5U6g3aYxXmlPoZVAwUMy9AOKyF2fVuZa2UD3qZjg578OrLRt8PcNN1PleVaL/5/yYATNL0ICUw==}
     engines: {node: '>=18'}
+
+  tech-stack-icons@2.1.0:
+    resolution: {integrity: sha512-6L8WPegruqXfS6U7oLPE2VBCJGXsXW4P97iorZpyI4DWBQxt0m+rLeGHpuu2tWb5jcyrIq1FEfDfron+DMSj/Q==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -4484,6 +4493,11 @@ snapshots:
       minizlib: 3.0.2
       mkdirp: 3.0.1
       yallist: 5.0.0
+
+  tech-stack-icons@2.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   thenify-all@1.6.0:
     dependencies:
