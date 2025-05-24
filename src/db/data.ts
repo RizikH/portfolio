@@ -69,6 +69,7 @@ export const projectsData = {
         "AWS",
         "Node.js",
         "Supabase",
+        "OpenAI",
       ],
       description:
         "iHive is a full-stack web application that connects entrepreneurs with investors through idea repositories, secure file sharing, real-time chat, and role-based collaboration.",

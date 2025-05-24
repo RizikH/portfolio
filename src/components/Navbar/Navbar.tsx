@@ -1,25 +1,21 @@
-'use client';
+"use client";
 
-import { useIsMobile } from '@/components/Hooks/useIsMobile';
-import { useState, useRef } from 'react';
-import { Link } from 'react-scroll';
-import styles from '@/styles/components/navbar.module.css';
+import React, { useRef, useState } from "react";
+import styles from "@/styles/components/navbar.module.css";
+import { Link } from "react-scroll";
+import Elements from "./Elements";
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 const Navbar: React.FC = () => {
-  const isMobile = useIsMobile();
-  const [menuOpen, setMenuOpen] = useState(false);
   const circleRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
-
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const closeMenu = () => setMenuOpen(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useGSAP(() => {
-    if (!lineRef.current || !circleRef.current || !navRef.current) return;
+    if (!lineRef.current || !circleRef.current || !navContainerRef.current || !navRef.current) return;
     const tl = gsap.timeline();
 
     tl.fromTo(
@@ -37,7 +33,7 @@ const Navbar: React.FC = () => {
         lineRef.current,
         { width: 0, height: 0, opacity: 0 },
         {
-          width: '100%',
+          width: navRef.current?.offsetWidth,
           height: '2px',
           opacity: 1,
           duration: 1.4,
@@ -79,70 +75,51 @@ const Navbar: React.FC = () => {
       );
   }, [navContainerRef]);
 
+  function toggleMenu() {
+    const newState = !menuOpen;
+    setMenuOpen(newState);
+    document.querySelector("main")?.style.setProperty("height", newState ? "100vh" : "auto");
+    navRef.current?.classList.toggle(styles.menuActive);
+  }
 
-
+  function closeMenu() {
+    if (menuOpen) {
+      setMenuOpen(false);
+      document.querySelector("main")?.style.setProperty("height", "auto");
+      navRef.current?.classList.remove(styles.menuActive);
+    }
+  }
 
   return (
-    <div ref={navContainerRef} style={{ position: 'relative', height: '4rem', widows: '100%' }}>
+    <div ref={navContainerRef} className={styles.navContainer}>
       <div className={styles.landingAnimation}>
         <div className={styles.circle} ref={circleRef}></div>
         <div className={styles.line} ref={lineRef}></div>
       </div>
-
-      <nav className={styles.nav} ref={navRef}>
-        <div className={styles.navLogo}>
-          <Link to="home" smooth duration={500} offset={-50} onClick={closeMenu}>
-            RizikH {isMobile && <span className="mobile-indicator">/(Mobile)</span>}
+      <nav className={styles.navbar} ref={navRef}>
+        <div className={styles.navbarLogo}>
+          <Link
+            to="hero"
+            smooth={true}
+            duration={600}
+            offset={50}
+            onClick={closeMenu}
+          >
+            RizikH
           </Link>
         </div>
 
-        {isMobile ? (
-          <>
-            <div className={styles.hamburger} onClick={toggleMenu}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+        <div className={styles.navbarLinks}>
+          <Elements menuOpen={menuOpen} onLinkClick={closeMenu} />
+        </div>
 
-            <div className={`${styles.navItemsWrapper} ${menuOpen ? styles.open : ''}`}>
-              <ul className={styles.navItems}>
-                <li className={styles.navItem}>
-                  <Link to="about" smooth duration={500} offset={-50} onClick={closeMenu}>About</Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link to="projects" smooth duration={500} offset={-50} onClick={closeMenu}>Projects</Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link to="contact" smooth duration={500} offset={-50} onClick={closeMenu}>Contact</Link>
-                </li>
-                <li className={styles.navItem}>
-                  <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>View Résumé</a>
-                </li>
-              </ul>
-
-              <div className={styles.navSocials}>
-                <a href="https://github.com/RizikH" target="_blank" onClick={closeMenu}>GitHub</a>
-                <a href="https://linkedin.com/in/rizik-haddad-075443266" target="_blank" onClick={closeMenu}>LinkedIn</a>
-                <a href="mailto:rizig.haddad.rh@gmail.com" onClick={closeMenu}>Email</a>
-              </div>
-            </div>
-          </>
-        ) : (
-          <ul className={styles.navItems}>
-            <li className={styles.navItem}>
-              <Link to="about" smooth duration={500} offset={-50}>About</Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link to="projects" smooth duration={500} offset={-50}>Projects</Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link to="contact" smooth duration={500} offset={-50}>Contact</Link>
-            </li>
-            <li className={styles.navItem}>
-              <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-            </li>
-          </ul>
-        )}
+        <button
+          className={styles.hamburger}
+          onClick={toggleMenu}
+          aria-label="Toggle navigation menu"
+        >
+          {menuOpen ? '✖' : '☰'}
+        </button>
       </nav>
     </div>
   );

@@ -37,14 +37,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             src="//code.tidio.co/qscpfop7tuw9vaseqly4eopii2xudxpj.js"
             strategy="afterInteractive"
           />
-          <LenisProvider>
-            <main className={styles.layout}>
+          <main className={styles.layout}>
+            <LenisProvider>
               <Navbar />
               {children}
               <Footer />
-            </main>
-          </LenisProvider>
+            </LenisProvider>
+          </main>
         </body>
+
       </html>
     </ViewTransitions>
   );

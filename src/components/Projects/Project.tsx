@@ -27,13 +27,13 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: projectRef.current,
-                start: "top 60%",
+                start: "top 80%",
                 end: "bottom bottom",
                 toggleActions: "play none none reverse",
                 scrub: false,
                 markers: false,
             },
-            defaults: { ease: "power2.out", duration: 0.4 }, // 🔹 faster overall
+            defaults: { ease: "power2.out", duration: 0.6 }, // 🔹 faster overall
         });
 
         const details = projectRef.current.querySelector(`.${styles.projectDetails}`);
