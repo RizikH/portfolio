@@ -4,7 +4,8 @@ import React from "react";
 import styles from "@/styles/components/projects.module.css";
 import Project from "@/components/Projects/Project";
 
-type ProjectsProps = {};
+type ProjectsProps = Record<string, never>;
+
 
 const Projects: React.FC<ProjectsProps> = () => {
     return (
