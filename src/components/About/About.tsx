@@ -69,7 +69,7 @@ export default function About() {
 
     const targets = additionalSkillsRef.current.querySelectorAll<HTMLElement>('.' + styles.skills);
     console.log(targets);
-    
+
     gsap.from(targets, {
       opacity: 0,
       x: -50,
@@ -102,7 +102,7 @@ export default function About() {
       <section className={styles.aboutmeContent} ref={aboutMeRef}>
         <section className={styles.left}>
           <FadeAnimation>
-            <h2>{aboutFocus.heading}</h2>
+            <h2 className={styles.focusHeading}>{aboutFocus.heading}</h2>
           </FadeAnimation>
           <section className={styles.leftText}>
             {aboutFocus.paragraphs.map((text, i) => (
@@ -117,7 +117,7 @@ export default function About() {
           <section className={styles.skillsWrapper}>
             <section className={styles.skillsSection}>
               <FadeAnimation>
-                <h2>Core Skills</h2>
+                <h2 className={styles.focusHeading}>Core Skills</h2>
                 <section className={styles.skillsList} ref={coreSkillsRef}>
                   {coreSkills.map((skill, i) => (
                     <div key={i} className={styles.skills}>
@@ -130,7 +130,7 @@ export default function About() {
 
             <section className={styles.skillsSection} ref={additionalSkillsRef}>
               <FadeAnimation>
-                <h2>Additional Skills</h2>
+                <h2 className={styles.focusHeading}>Additional Skills</h2>
                 <section className={styles.skillsList}>
                   {additionalSkills.map((skill, i) => (
                     <div key={i} className={`${styles.skills} ${styles.additionalSkills}`}>

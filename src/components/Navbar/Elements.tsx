@@ -18,7 +18,7 @@ const Right = ({ menuOpen, onLinkClick }: { menuOpen: boolean; onLinkClick: () =
         <Link to="contact" smooth={true} duration={600} offset={50} onClick={onLinkClick}>Contact</Link>
       </li>
       <li className={styles.navbarItem}>
-        <a href="/Docs/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={onLinkClick}>Resume</a>
+        <a href="/Docs/Full-Stack-Resume.pdf.pdf" target="_blank" rel="noopener noreferrer" onClick={onLinkClick}>Resume</a>
       </li>
     </ul>
   );

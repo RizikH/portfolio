@@ -1,4 +1,7 @@
+//iHive
 import ihiveImage from "../../public/Images/Projects/iHive/iHive-preview.jpeg"
+
+//Portfolio
 import porfolioImage from "../../public/Images/Projects/Portfolio/portfolio-preview.jpg"
 
 export const aboutHeader = {
@@ -60,6 +63,7 @@ export const heroContent = {
 export const projectsData = {
   Projects: [
     {
+      slug: "ihive",
       name: "iHive",
       image: ihiveImage,
       stack: [
@@ -77,6 +81,7 @@ export const projectsData = {
       sourceCode: "https://github.com/RizikH/iHive",
     },
     {
+      slug: "portfolio",
       name: "Portfolio",
       image: porfolioImage,
       stack: [
@@ -93,4 +98,3 @@ export const projectsData = {
     },
   ],
 };
-

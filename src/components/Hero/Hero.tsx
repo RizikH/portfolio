@@ -90,7 +90,7 @@ export default function Hero() {
                     <div className={styles.heroText}>
                         <div className={styles.header}>
                             <h2>{heroContent.title}</h2>
-                            <h3>{heroContent.job}</h3>
+                            <h3>{heroContent.job + ' - ' + heroContent.focus}</h3>
                             <h4>{heroContent.location}</h4>
                         </div>
                         <p>{heroContent.description}</p>

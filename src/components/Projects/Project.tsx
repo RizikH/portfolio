@@ -6,8 +6,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 
+
 type ProjectProps = {
     data: {
+        slug: string;
         name: string;
         image: StaticImageData;
         stack: string[];
@@ -17,6 +19,7 @@ type ProjectProps = {
     };
     index: number;
 };
+
 
 const Project: React.FC<ProjectProps> = ({ data, index }) => {
     const projectRef = React.useRef<HTMLDivElement>(null);
@@ -33,7 +36,7 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
                 scrub: false,
                 markers: false,
             },
-            defaults: { ease: "power2.out", duration: 0.6 }, // 🔹 faster overall
+            defaults: { ease: "power2.out", duration: 0.6 },
         });
 
         const details = projectRef.current.querySelector(`.${styles.projectDetails}`);

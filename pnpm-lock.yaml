@@ -38,6 +38,9 @@ importers:
       react-scroll:
         specifier: ^1.9.3
         version: 1.9.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      sass:
+        specifier: ^1.89.0
+        version: 1.89.0
       tech-stack-icons:
         specifier: ^2.1.0
         version: 2.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -3061,7 +3064,6 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
-    optional: true
 
   chownr@3.0.0: {}
 
@@ -3641,8 +3643,7 @@ snapshots:
 
   ignore@7.0.4: {}
 
-  immutable@5.1.2:
-    optional: true
+  immutable@5.1.2: {}
 
   import-fresh@3.3.1:
     dependencies:
@@ -4181,8 +4182,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.1.2:
-    optional: true
+  readdirp@4.1.2: {}
 
   reflect.getprototypeof@1.0.10:
     dependencies:
@@ -4252,7 +4252,6 @@ snapshots:
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
-    optional: true
 
   scheduler@0.23.2:
     dependencies:

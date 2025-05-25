@@ -31,30 +31,30 @@ const Footer: React.FC = () => {
       <section ref={triggerRef} className="h-1 bg-transparent" />
       <footer
         ref={footerRef}
-        className="relative w-full min-h-[400px] text-white"
+        className="relative w-full text-white"
       >
-        <div className="flex flex-col justify-between h-full max-w-7xl mx-auto">
+        <div className="flex flex-col justify-between h-full w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 footer-item">
             <div>
               <h2 className="text-2xl font-semibold mb-2">Pages</h2>
               <ul className="space-y-2">
                 <li>
-                  <Link to="home" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer">
+                  <Link to="home" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="about" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer">
+                  <Link to="about" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link to="projects" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer">
+                  <Link to="projects" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block">
                     Projects
                   </Link>
                 </li>
                 <li>
-                  <Link to="contact" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer">
+                  <Link to="contact" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block">
                     Contact
                   </Link>
                 </li>
@@ -64,17 +64,17 @@ const Footer: React.FC = () => {
               <h2 className="text-2xl font-semibold mb-2">Links</h2>
               <ul className="space-y-2">
                 <li>
-                  <a href="https://linkedin.com/in/rizik-haddad-075443266" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#00ff90] transition-colors">
+                  <a href="https://linkedin.com/in/rizik-haddad-075443266" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#00ff90] transition-colors inline-block">
                     LinkedIn
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/RizikH" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-[#00ff90] transition-colors">
+                  <a href="https://github.com/RizikH" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-[#00ff90] transition-colors inline-block">
                     GitHub
                   </a>
                 </li>
                 <li>
-                  <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF" className="hover:text-[#00ff90] transition-colors">
+                  <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF" className="hover:text-[#00ff90] transition-colors inline-block">
                     View Résumé
                   </a>
                 </li>
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between items-center mt-10 px-6 footer-item">
+          <div className="flex flex-col sm:flex-row justify-between items-end mt-10 footer-item mb-5">
             <div className="text-6xl font-bold text-center mb-4 sm:mb-0">Rizik H</div>
             <div className="text-sm text-gray-300">&copy; 2025 RizikH. All rights reserved.</div>
           </div>

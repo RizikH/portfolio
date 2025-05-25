@@ -29,13 +29,22 @@
 }
 
 .heroText h2 {
-    font-size: var(--font-xl);
+    font-size: var(--font-2xl);
     line-height: 1.125;
     letter-spacing: -0.04rem;
+    color: var(--fg);
 }
 
 .heroText h3 {
-    font-size: var(--font-lg);
+    font-size: var(--font-md);
+    color: var(--muted);
+    line-height: 1.125;
+    letter-spacing: -0.05rem;
+}
+
+.heroText h4 {
+    font-size: var(--font-md);
+    color: var(--muted);
     line-height: 1.125;
     letter-spacing: -0.05rem;
 }
@@ -52,6 +61,7 @@
     font-weight: 500;
     box-shadow: 0 0 2px 2px var(--accent-light);
 }
+
 .heroText button:hover {
     background-color: var(--accent-light);
     color: var(--bg);
