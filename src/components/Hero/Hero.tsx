@@ -5,6 +5,10 @@ import type { LottieRefCurrentProps } from 'lottie-react';
 import styles from '@/styles/components/hero.module.css';
 import scrollAnimation from '@/components/Assets/scroll.json';
 import Image from 'next/image';
+import githubIcon from '../../../public/icons/contact/github.png';
+import linkedinIcon from '../../../public/icons/contact/linkedin.png';
+import emailIcon from '../../../public/icons/contact/email.png';
+
 import {
     heroContent,
 }
@@ -23,6 +27,7 @@ export default function Hero() {
     const imageRef = useRef<HTMLDivElement>(null);
     const imageContainerRef = useRef<HTMLDivElement>(null);
     const heroRef = useRef<HTMLDivElement>(null);
+    const linksRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,7 +53,7 @@ export default function Hero() {
 
 
     useGSAP(() => {
-        if (!imageContainerRef.current || !imageRef.current || !heroRef.current) return;
+        if (!imageContainerRef.current || !imageRef.current || !heroRef.current || !linksRef.current) return;
 
         const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
@@ -78,24 +83,74 @@ export default function Hero() {
                     duration: 0.5,
                     stagger: 0.2,
                 }
+            )
+            .fromTo(
+                linksRef.current.querySelector('div'),
+                { width: 0 },
+                { width: '5rem', duration: 0.5, ease: 'power2.out' },
+            )
+
+            .fromTo(
+                linksRef.current.querySelectorAll('a'), {
+                x: -40,
+                opacity: 0,
+            },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.1,
+                    stagger: 0.25,
+                }, '-=0.3'
             );
     }, { scope: heroRef });
 
 
     return (
         <>
-
             <section id='hero' className={styles.hero} ref={heroRef}>
                 <div className={styles.heroContent}>
                     <div className={styles.heroText}>
                         <div className={styles.header}>
                             <h2>{heroContent.title}</h2>
+                            <div className={styles.links} ref={linksRef}>
+                                <div className={styles.line}></div>
+                                <a href="mailto:rizig.haddad.rh@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Github" className={styles.link}>
+                                    <Image
+                                        title='Email'
+                                        src={emailIcon}
+                                        alt="Email"
+                                        width={30}
+                                        height={30}
+                                        priority
+                                    />
+                                </a>
+                                <a href="https://github.com/RizikH" target="_blank" rel="noopener noreferrer" aria-label="Github" className={styles.link}>
+                                    <Image
+                                        title='Github'
+                                        src={githubIcon}
+                                        alt="Github"
+                                        width={30}
+                                        height={30}
+                                        priority
+                                    />
+                                </a>
+                                <a href="https://www.linkedin.com/in/rizik-haddad-075443266/" target="_blank" rel="noopener noreferrer" aria-label="Github" className={styles.link}>
+                                    <Image
+                                        title='LinkedIn'
+                                        src={linkedinIcon}
+                                        alt="linkedin"
+                                        width={30}
+                                        height={30}
+                                        priority
+                                    />
+                                </a>
+                            </div>
                             <h3>{heroContent.job + ' - ' + heroContent.focus}</h3>
                             <h4>{heroContent.location}</h4>
                         </div>
                         <p>{heroContent.description}</p>
                         <button>
-                            <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF" className="hover:text-[#00ff90] transition-colors">
+                            <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF">
                                 My Resume
                             </a>
                         </button>

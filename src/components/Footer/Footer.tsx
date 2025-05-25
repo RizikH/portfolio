@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
       stagger: 0.15,
       scrollTrigger: {
         trigger: triggerRef.current,
-        start: 'top 70%',
+        start: 'top 90%',
         toggleActions: 'play none none reverse',
       },
     });
@@ -34,57 +34,29 @@ const Footer: React.FC = () => {
         className="relative w-full text-white"
       >
         <div className="flex flex-col justify-between h-full w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 footer-item">
-            <div>
+          <div className="flex flex-col sm:flex-row justify-between items-center mb-10 footer-item w-full">
+            <div className="flex flex-col items-center sm:items-start mb-4 sm:mb-0">
               <h2 className="text-2xl font-semibold mb-2">Pages</h2>
               <ul className="space-y-2">
                 <li>
-                  <Link to="home" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block">
+                  <Link to="home" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block footer-item">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="about" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block">
+                  <Link to="about" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block footer-item">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link to="projects" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block">
+                  <Link to="projects" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block footer-item">
                     Projects
                   </Link>
                 </li>
-                <li>
-                  <Link to="contact" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block">
-                    Contact
-                  </Link>
-                </li>
               </ul>
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold mb-2">Links</h2>
-              <ul className="space-y-2">
-                <li>
-                  <a href="https://linkedin.com/in/rizik-haddad-075443266" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#00ff90] transition-colors inline-block">
-                    LinkedIn
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/RizikH" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-[#00ff90] transition-colors inline-block">
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume PDF" className="hover:text-[#00ff90] transition-colors inline-block">
-                    View Résumé
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-end mt-10 footer-item mb-5">
-            <div className="text-6xl font-bold text-center mb-4 sm:mb-0">Rizik H</div>
-            <div className="text-sm text-gray-300">&copy; 2025 RizikH. All rights reserved.</div>
+            <div className="text-6xl font-bold text-center mb-4 sm:mb-0 footer-item">Rizik H</div>
+            <div></div>
           </div>
         </div>
       </footer>

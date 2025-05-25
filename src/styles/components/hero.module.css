@@ -31,7 +31,6 @@
 .heroText h2 {
     font-size: var(--font-2xl);
     line-height: 1.125;
-    letter-spacing: -0.04rem;
     color: var(--fg);
 }
 
@@ -106,6 +105,24 @@
 
 .extra {
     background-color: var(--accent-light);
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin: 0.3rem;
+    align-items: center;
+    gap: 1rem;
+}
+.line {
+    width: 0;
+    border-radius: 1rem;
+    height: 3px;
+    background-color: var(--accent-light);
+}
+.links a{
+    opacity: 0;
 }
 
 /* ==== Responsive Hero ==== */
