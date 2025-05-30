@@ -32,6 +32,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ViewTransitions>
       <html lang="en">
+        <head>
+          {/* Google Analytics */}
+          <Script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-D0CXX34WSV"
+            strategy="afterInteractive"
+          />
+          <Script id="gtag-init" strategy="afterInteractive">
+            {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-D0CXX34WSV');
+          `}
+          </Script>
+        </head>
+        
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <Script
             src="//code.tidio.co/qscpfop7tuw9vaseqly4eopii2xudxpj.js"

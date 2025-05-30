@@ -38,7 +38,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     font-family: "TWK Lausanne", "Inter", sans-serif;
-    background: linear-gradient(to bottom, #252525, #1e1e1e);
+    background: linear-gradient(135deg, #1e1f26 0%, #2c2f38 100%);
     background-color: var(--bg);
     color: var(--fg);
 }

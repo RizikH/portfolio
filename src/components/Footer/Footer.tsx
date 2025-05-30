@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center mb-10 footer-item w-full">
             <div className="flex flex-col items-center sm:items-start mb-4 sm:mb-0">
               <h2 className="text-2xl font-semibold mb-2">Pages</h2>
-              <ul className="space-y-2 flex flex-col justify-center items-center sm:items-start">
+              <ul className="space-y-2 flex flex-col md:justify-center md:items-center sm:items-start">
                 <li>
                   <Link to="hero" smooth={true} duration={500} offset={-50} className="hover:text-[#00ff90] transition-colors cursor-pointer inline-block footer-item">
                     Home
