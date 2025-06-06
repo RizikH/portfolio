@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
             to="hero"
             smooth={true}
             duration={600}
-            offset={50}
+            offset={-50}
             onClick={closeMenu}
           >
             Rizik H

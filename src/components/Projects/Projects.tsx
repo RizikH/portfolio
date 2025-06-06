@@ -2,7 +2,7 @@
 
 import { projectsData } from "@/db/data";
 import React, { useState, useRef } from "react";
-import styles from "@/styles/components/projects.module.css";
+import styles from "@/styles/components/projects.module.scss";
 import Project from "@/components/Projects/Project";
 import ProjectModal from "@/components/Projects/ProjectModal";
 import gsap from "gsap";
@@ -25,33 +25,24 @@ const Projects: React.FC = () => {
   useGSAP(() => {
     if (!projectsRef.current) return;
 
-    const tl = gsap.timeline({
+    const target = projectsRef.current.querySelector(`.${styles.projectsTitle}`);
+    gsap.from(target, {
+      opacity: 0,
+      y: 50,
+      duration: 0.5,
+      ease: "power2.out",
       scrollTrigger: {
         trigger: projectsRef.current,
-        start: "top 90%",
-        end: "bottom bottom",
+        start: "top 100%",
         toggleActions: "play none none reverse",
-        scrub: false,
-        markers: false,
       },
-      defaults: { ease: "sine.out", duration: 0.7 },
     });
 
-    tl.fromTo(
-      projectsRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0 }
-    ).fromTo(
-      projectsRef.current.querySelector(`.${styles.projectsTitle}`),
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0 },
-      "-=0.3"
-    );
-  }, []);
+  }, [projectsRef]);
 
   return (
     <div className={styles.projects} ref={projectsRef}>
-      <h2 className={styles.projectsTitle}>Selected Projects</h2>
+      <h2 className='text-xl'>Selected Projects</h2>
       <div className={styles.projectsContainer}>
         {projectsData.Projects.map((project, i) => (
           <Project

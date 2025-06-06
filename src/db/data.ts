@@ -53,7 +53,7 @@ export const heroContent = {
   location: "North Carolina, USA",
   job: "Software Engineer",
   focus: "Full-Stack",
-  image: "/Images/hero2.png",
+  image: "/Images/hero.jpg",
   description: `
     I enjoy creating subtle animations and interactions that enhance UX. I like it simple, clean, and functional. I am available for work and open to new opportunities.
   `,
@@ -93,7 +93,6 @@ export const skills = [
       { name: "GSAP", icon: SiGreensock, description: "Animation, unleashed" },
       { name: "HTML5", icon: FaHtml5, description: "Structure of the web" },
       { name: "CSS3", icon: FaCss3Alt, description: "Looks that kill" },
-      { name: "Pug", icon: SiPug, description: "HTML, simplified" },
     ],
   },
   {
@@ -103,20 +102,9 @@ export const skills = [
       { name: "Express.js", icon: SiExpress, description: "Minimalist backend magic" },
       { name: "Java", icon: FaJava, description: "Verbose but mighty" },
       { name: "Spring Boot", icon: SiSpringboot, description: "Java, accelerated" },
-      { name: "SQL", icon: SiMysql, description: "Tables and queries" },
       { name: "PostgreSQL", icon: SiPostgresql, description: "SQL with power" },
       { name: "Firebase", icon: SiFirebase, description: "Serverless fire" },
       { name: "Supabase", icon: SiSupabase, description: "Open-source Firebase" },
-    ],
-  },
-  {
-    title: "Tools",
-    skills: [
-      { name: "Git", icon: FaGitAlt, description: "Version control vibes" },
-      { name: "GitHub", icon: FaGithub, description: "Code in the cloud" },
-      { name: "VS Code", icon: BiLogoVisualStudio, description: "Dev’s playground" },
-      { name: "IntelliJ", icon: SiIntellijidea, description: "Java IDE wizard" },
-      { name: "NetBeans", icon: SiApachenetbeanside, description: "Old-school Java IDE" },
     ],
   },
 ];

@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from '@/styles/components/contact.module.css';
 import Image from 'next/image';
-import emailIcon from '../../../public/icons/contact/email.png';
-import githubIcon from '../../../public/icons/contact/github.png';
-import linkedinIcon from '../../../public/icons/contact/linkedin.png';
-import resumeIcon from '../../../public/icons/contact/resume.png';
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { TiDocumentText } from "react-icons/ti";
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 
@@ -37,50 +36,24 @@ export default function Contact() {
                 <div className={styles.contactContainer} ref={contactRef}>
                     <a href="mailto:rizig.haddad.rh@gmail.com" className={styles.contactLink}>
                         <div className={styles.contactLinks}>
-                            <Image
-                                src={emailIcon}
-                                alt="Email"
-                                className={styles.contactIcon}
-                                width={50}
-                                height={50}
-                            />
+                            <MdEmail size={50} />
                         </div>
                         Email</a>
                     <a href="https://github.com/RizikH" className={styles.contactLink}>
                         <div className={styles.contactLinks}>
-                            <Image
-                                src={githubIcon}
-                                alt="Github"
-                                className={styles.contactIcon}
-                                width={50}
-                                height={50}
-                            />
+                            <FaGithub size={50} />
                         </div>
                         Github
                     </a>
                     <a href="https://www.linkedin.com/in/rizik-haddad-075443266/" className={styles.contactLink}>
                         <div className={styles.contactLinks}>
-                            <Image
-                                src={linkedinIcon}
-                                alt="LinkedIn"
-                                className={styles.contactIcon}
-                                width={50}
-                                height={50}
-                            />
-
+                            <FaLinkedin size={50} />
                         </div>
                         LinkedIn
                     </a>
                     <a href="/Docs/Full-Stack-Resume.pdf" className={styles.contactLink}>
                         <div className={styles.contactLinks}>
-                            <Image
-                                src={resumeIcon}
-                                alt="LinkedIn"
-                                className={styles.contactIcon}
-                                width={50}
-                                height={50}
-                            />
-
+                            <TiDocumentText size={50} />
                         </div>
                         Resume
                     </a>

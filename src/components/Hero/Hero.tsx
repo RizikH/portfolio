@@ -18,7 +18,7 @@ export default function Hero() {
 
     const handleMouseEnter = () => {
         gsap.to(headerFocusContentRef.current, {
-            y: "-2rem",
+            y: "-1.6rem",
             duration: 0.8,
             ease: "power2.out",
         });
@@ -75,6 +75,7 @@ export default function Hero() {
                 val: endValue,
                 duration: 2,
                 ease: "circ.out",
+                delay: 0.3,
                 onUpdate: () => {
                     target.textContent = Math.floor(counterObj.val).toString();
                 },

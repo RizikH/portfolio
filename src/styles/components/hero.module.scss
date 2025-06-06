@@ -71,10 +71,15 @@
     gap: 1rem;
 
     img {
-      width: 200px;
-      height: 200px;
+      width: 20%;
+      height: 20%;
       border-radius: 50%;
-      background-color: var(--muted);
+      scale: 1;
+
+      @media screen and (max-width: 768px) {
+        width: 150px;
+        height: 150px;
+      }
     }
 
     .headerTitleContainer {
@@ -130,9 +135,6 @@
         display: flex;
         flex-direction: column;
         align-self: flex-start;
-      }
-      @media screen and (max-width: 768px) {
-        
       }
     }
 
