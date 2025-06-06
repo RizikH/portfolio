@@ -1,0 +1,60 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+
+  .skillsContainer {
+    display: flex;
+    flex-direction: column;
+
+    .skillsSection {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+
+      .skillsList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .skills {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          background-color: var(--bg);
+          color: var(--fg);
+          font-size: 0.875rem;
+          border: 1px solid var(--muted);
+
+          .skill {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            justify-content: center;
+            align-items: center;
+            width: 5rem;
+            height: 4rem;
+
+            &:hover {
+              scale: 1.05;
+              cursor: pointer;
+            }
+          }
+
+          span {
+            font-size: 0.875rem;
+            color: var(--muted);
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

@@ -27,7 +27,7 @@
 /* PROJECT CARD */
 .project {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 4rem;
@@ -50,6 +50,8 @@
     object-fit: contain;
     filter: brightness(70%);
     transition: all 0.3s ease;
+    pointer-events: all;
+    cursor: pointer;
 }
 
 .projectImage:hover img {
@@ -117,6 +119,7 @@
     .stackIcon {
         width: 2.8rem;
     }
+
 }
 
 @media screen and (max-width: 640px) {

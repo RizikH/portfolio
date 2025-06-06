@@ -1,0 +1,94 @@
+/* Overlay covers entire screen */
+.projectOverlayContainer {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+}
+
+.projectOverlay {
+  background-color: var(--bg, #fff);
+  border-radius: 12px;
+  padding: 0;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden; /* let smooth-scrollbar handle scroll */
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.scrollContent {
+  height: 90vh;
+  padding: 2rem;
+  overflow: hidden; /* required by smooth-scrollbar */
+}
+
+/* Close button inside modal */
+.projectOverlay button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 2.5  rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.projectOverlay button:hover {
+    color: #222;
+}
+
+/* Tech stack icons */
+.stackIcons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.stackIcon {
+    width: 3rem;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.stackIcon:hover {
+    transform: scale(1.1);
+}
+
+/* Links */
+.projectLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+.projectLinks a {
+    font-weight: 500;
+    color: var(--accent, #0070f3);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.projectLinks a:hover {
+    border-bottom: 1px solid var(--accent, #0070f3);
+}
+
+/* Image inside modal */
+.projectOverlay img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}

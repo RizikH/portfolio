@@ -1,0 +1,215 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+
+  .heroContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+
+    .heroLinks {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      .ctaButton {
+        box-shadow: 0 0 1px var(--fg);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: var(--bg);
+        opacity: 0;
+        will-change: transform, opacity;
+
+        &:hover {
+          color: var(--bg);
+          background-color: var(--fg);
+
+          @media screen and (max-width: 768px) {
+            background-color: var(--bg);
+            color: var(--fg);
+          }
+        }
+      }
+
+      a {
+        opacity: 0;
+        will-change: transform, opacity;
+
+        .heroIcon {
+          width: 1.5rem;
+          height: 1.5rem;
+          color: var(--fg);
+          transition: all 0.1s ease-in-out;
+          will-change: transform, opacity;
+
+          &:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: var(--muted);
+    }
+
+    .headerTitleContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.1rem;
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--fg);
+        word-spacing: 0.1rem;
+      }
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h1 {
+          font-size: 1.25rem;
+        }
+        
+      }
+    }
+
+    .headerFocus {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.5rem;
+      height: 1.7rem;
+      overflow: hidden;
+      width: fit-content;
+      cursor: pointer;
+
+      p {
+        display: inline-block;
+        line-height: 1.7rem;
+      }
+
+      .circle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        align-self: center;
+        background-color: var(--accent);
+      }
+
+      .focusContent {
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+      }
+      @media screen and (max-width: 768px) {
+        
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .counterDiv {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5rem;
+    width: 100%;
+
+    .counter {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+      gap: 0.2rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      background-color: var(--bg);
+      font-size: 0.875rem;
+      border: 1px solid var(--muted);
+
+      .counterNumber {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--fg);
+      }
+
+      .counterText {
+        font-size: 0.875rem;
+        color: var(--muted);
+        text-align: left;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .counter {
+        height: 5rem;
+        justify-content: center;
+
+        .counterNumber {
+          font-size: 1rem;
+          font-weight: bold;
+          display: inline;
+        }
+
+        .counterText {
+          font-size: var(--font-base);
+          display: inline;
+        }
+      }
+    }
+  }
+
+  .scrollHint {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
+}
