@@ -5,6 +5,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  opacity: 0;
+  will-change: opacity, transform;
 
   .skillsContainer {
     display: flex;
@@ -24,7 +26,7 @@
         .skills {
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
+          align-items: center;
           flex: 0 0 calc(25% - 1rem);
           justify-content: space-between;
           padding: 0.5rem;

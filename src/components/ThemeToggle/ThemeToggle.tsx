@@ -17,7 +17,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="flex justify-center items-center ml-4 text-xl text-[var(--fg)] hover:opacity-85"
+      className="flex justify-center items-center text-xl text-[var(--fg)] hover:opacity-85"
       aria-label="Toggle Theme"
     >
       {theme === 'dark' ? <MdOutlineWbSunny /> : <GoMoon />}

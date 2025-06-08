@@ -1,31 +1,38 @@
 import React from "react";
 import styles from "@/styles/components/projects.module.scss";
-import StackIcon from "tech-stack-icons";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { Safari } from "@/components/magicui/safari"
+import { Safari } from "@/components/magicui/safari";
+
+type StackItem = {
+  name: string;
+  icon: React.ComponentType<{ size?: number }>;
+  description: string;
+};
 
 type ProjectProps = {
   data: {
     slug: string;
     name: string;
+    url: string;
     imageSrc: string;
-    stack: string[];
+    stack: StackItem[];
     description: string;
     liveDemo: string;
     sourceCode: string;
   };
   index: number;
-  onOpenModal: () => void;
 };
 
-const Project: React.FC<ProjectProps> = ({ data, index, onOpenModal }) => {
+const Project: React.FC<ProjectProps> = ({ data, index }) => {
   const projectRef = React.useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     if (!projectRef.current) return;
 
-    const targets = projectRef.current.querySelectorAll(`.${styles.projectImage}, .${styles.projectDetails}`);
+    const targets = projectRef.current.querySelectorAll(
+      `.${styles.projectImage}, .${styles.projectDetails}`
+    );
 
     targets.forEach((target) => {
       gsap.from(target, {
@@ -40,28 +47,31 @@ const Project: React.FC<ProjectProps> = ({ data, index, onOpenModal }) => {
         },
       });
     });
-
   }, [projectRef]);
 
   return (
     <div className={styles.project} key={index} ref={projectRef}>
-      <div className={styles.projectImage} onClick={onOpenModal}>
+      <div className={styles.projectImage}>
         <Safari
-          url="ihive.vercel.app"
+          url={data.url}
           className={"size-full"}
           imageSrc={data.imageSrc}
         />
-        {/* <Image src={data.image} alt={data.name} /> */}
       </div>
       <div className={styles.projectDetails}>
         <h3>{data.name}</h3>
         <p>{data.description}</p>
         <div className={styles.stackIcons}>
-          {data.stack.map((skill, i) => (
-            <div key={i} title={skill} className={styles.stackIcon}>
-              <StackIcon name={skill.toLowerCase().replace(/\s|\./g, "")} />
-            </div>
-          ))}
+          {data.stack.map((skill, i) => {
+            const Icon = skill.icon;
+            return (
+              <div key={i} className={styles.skill} title={skill.description}>
+                <div className={styles.icon}>
+                  <Icon size={30} />
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div className={styles.projectLinks}>
           {data.liveDemo && (

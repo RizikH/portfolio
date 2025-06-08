@@ -1,0 +1,47 @@
+.contactSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding: 3rem 0;
+    gap: 3rem;
+    opacity: 0;
+    will-change: opacity, transform;
+
+    .contactText {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+    }
+
+    .contactContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+
+        a {
+            text-align: center;
+
+            .contactLinks {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+    }
+
+    @media screen and (max-width: 768px) {
+        .contactContainer {
+            gap: 2rem;
+        }
+    }
+}

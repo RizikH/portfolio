@@ -16,6 +16,20 @@ export default function About() {
   const aboutSectionRef = React.useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    gsap.fromTo(aboutSectionRef.current, {
+      opacity: 0,
+      y: 50,
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: aboutSectionRef.current,
+        start: 'top 100%',
+        toggleActions: 'play none none reverse',
+      },
+    });
     const targets = aboutSectionRef.current?.querySelectorAll(`h2, .${styles.skillsContainer}, .${styles.skillsSection}`);
     if (!targets) return;
 

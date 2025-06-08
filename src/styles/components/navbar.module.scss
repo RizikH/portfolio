@@ -89,7 +89,7 @@
       padding: 2rem 0;
       z-index: 10;
 
-      a{
+      a {
         font-size: 1.2rem;
         text-decoration: none;
         margin: 1rem 0;
@@ -97,6 +97,18 @@
         &:hover {
           text-decoration: underline;
         }
+      }
+
+      @media screen and (max-width: 768px) {
+        .navbarItem {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem 0;
+          border-bottom: 1px solid var(--muted);
+        }
+
       }
     }
   }

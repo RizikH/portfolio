@@ -1,35 +1,29 @@
 // Font Awesome
 import {
   FaCss3Alt,
-  FaGitAlt,
-  FaGithub,
   FaHtml5,
   FaJava,
   FaJsSquare,
   FaReact,
   FaSass,
+  FaAws,
 } from "react-icons/fa";
 
 // Simple Icons
 import {
-  SiApachenetbeanside,
   SiExpress,
   SiFirebase,
   SiGreensock,
-  SiIntellijidea,
-  SiMysql,
   SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
-  SiPug,
   SiSpringboot,
   SiSupabase,
   SiTailwindcss,
   SiTypescript,
 } from "react-icons/si";
 
-// Boxicons
-import { BiLogoVisualStudio } from "react-icons/bi";
+import { AiOutlineOpenAI } from "react-icons/ai";
 
 
 
@@ -115,15 +109,16 @@ export const projectsData = {
     {
       slug: "ihive",
       name: "iHive",
+      url: "https://ihive.vercel.app",
       imageSrc: "/Images/Projects/iHive/iHive-preview.jpeg",
       stack: [
-        "TypeScript",
-        "Next.js2",
-        "React.js",
-        "AWS",
-        "Node.js",
-        "Supabase",
-        "OpenAI",
+        { name: "TypeScript", icon: SiTypescript, description: "JavaScript, but smarter" },
+        { name: "Next.js", icon: SiNextdotjs, description: "React on steroids" },
+        { name: "React.js", icon: FaReact, description: "UI meets logic" },
+        { name: "AWS", icon: FaAws, description: "Cloud computing giant" },
+        { name: "Node.js", icon: SiNodedotjs, description: "JavaScript on servers" },
+        { name: "Supabase", icon: SiSupabase, description: "Open-source Firebase" },
+        { name: "OpenAI", icon: AiOutlineOpenAI, description: "AI-powered features" },
       ],
       description:
         "iHive is a full-stack web application that connects entrepreneurs with investors through idea repositories, secure file sharing, real-time chat, and role-based collaboration.",
@@ -133,13 +128,16 @@ export const projectsData = {
     {
       slug: "portfolio",
       name: "Portfolio",
+      url: "https://rizikh.vercel.app",
       imageSrc: "/Images/Projects/Portfolio/portfolio-preview.jpg",
       stack: [
-        "TypeScript",
-        "Next.js2",
-        "React.js",
-        "Tailwind CSS",
-        "GSAP",
+        { name: "TypeScript", icon: SiTypescript, description: "JavaScript, but smarter" },
+        { name: "Next.js", icon: SiNextdotjs, description: "React on steroids" },
+        { name: "React.js", icon: FaReact, description: "UI meets logic" },
+        { name: "Tailwind CSS", icon: SiTailwindcss, description: "Utility class wizardry" },
+        { name: "SASS", icon: FaSass, description: "CSS with superpowers" },
+        { name: "GSAP", icon: SiGreensock, description: "Animation, unleashed" },
+
       ],
       description:
         "Built with React.js, Next.js, Tailwind CSS, and GSAP. Designed to deliver a minimalist yet elegant user experience, it showcases selected projects, skills, and background with smooth animations and responsive design.",

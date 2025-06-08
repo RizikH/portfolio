@@ -6,7 +6,6 @@ import styles from "@/styles/components/projectModal.module.css";
 import Image from "next/image";
 import StackIcon from "tech-stack-icons";
 import gsap from "gsap";
-import { useLenis } from "@/components/Context/lenisContext";
 import Scrollbar from "smooth-scrollbar";
 
 type ProjectType = {
@@ -28,11 +27,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
     const scrollbarRef = useRef<HTMLDivElement>(null);
     const modalRef = useRef<HTMLDivElement>(null);
     const scrollbarInstanceRef = useRef<Scrollbar | null>(null);
-    const lenis = useLenis();
 
     useEffect(() => {
         // Pause layout scroll
-        lenis?.stop();
         document.documentElement.style.overflow = "hidden";
         document.body.style.overflow = "hidden";
 
@@ -48,11 +45,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
         return () => {
             scrollbarInstanceRef.current?.destroy();
-            lenis?.start();
             document.documentElement.style.overflow = "";
             document.body.style.overflow = "";
         };
-    }, [lenis]);
+    }, []);
 
     useEffect(() => {
         const target = modalRef.current;
@@ -81,6 +77,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                             <span className={styles.closeIcon}>&times;</span>
                         </button>
                     </div>
+                    <div className="h-[600vh]"></div>
                     {/* <Image src={project.imageSrc} alt={project.name} /> */}
                     <h3>{project.name}</h3>
                     <p>{project.description}</p>
