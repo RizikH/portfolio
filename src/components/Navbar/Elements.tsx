@@ -2,27 +2,40 @@
 
 import React from "react";
 import { Link } from "react-scroll";
-import styles from "@/styles/components/navbar.module.css";
+import styles from "@/styles/components/navbar.module.scss";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 
-
-const Right = ({ menuOpen, onLinkClick }: { menuOpen: boolean; onLinkClick: () => void }) => {
+const Elements = ({
+  menuOpen,
+  onLinkClick,
+}: {
+  menuOpen: boolean;
+  onLinkClick: () => void;
+}) => {
   return (
-    <ul className={`${styles.navbarRightSide} ${menuOpen ? styles.active : ""}`}>
+    <ul
+      className={`${styles.navbarRightSide} ${menuOpen ? styles.active : ""}`}
+    >
       <li className={styles.navbarItem}>
-        <Link to="about" smooth={true} duration={600} offset={50} onClick={onLinkClick}>About</Link>
+        <Link to="about" smooth duration={600} offset={50} onClick={onLinkClick}>
+          About
+        </Link>
       </li>
       <li className={styles.navbarItem}>
-        <Link to="projects" smooth={true} duration={600} offset={50} onClick={onLinkClick}>Projects</Link>
+        <Link to="projects" smooth duration={600} offset={50} onClick={onLinkClick}>
+          Projects
+        </Link>
       </li>
       <li className={styles.navbarItem}>
-        <Link to="contact" smooth={true} duration={600} offset={50} onClick={onLinkClick}>Contact</Link>
+        <Link to="contact" smooth duration={600} offset={50} onClick={onLinkClick}>
+          Contact
+        </Link>
       </li>
-      <li className={styles.navbarItem}>
-        <a href="/Docs/Full-Stack-Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={onLinkClick}>Resume</a>
+      <li className={styles.navbarItem} onClick={onLinkClick}>
+        <ThemeToggle />
       </li>
     </ul>
   );
 };
 
-
-export default Right;
+export default Elements;

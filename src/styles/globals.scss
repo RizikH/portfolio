@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==== Root Theme Variables ==== */
+:root {
+  --bg: #FAFAFA;
+  --fg: #000000;
+  --accent: #00ff90;
+  --accent-light: #18c28d;
+  --muted: #666666;
+  --project-bg: #c3c3c3;
+  --project-hover-bg: #eaeaea;
+
+  --font-sm: 0.7rem;
+  --font-base: 0.9rem;
+  --font-md: 1rem;
+  --font-lg: 1.2rem;
+  --font-xl: 1.6rem;
+  --font-2xl: 2rem;
+  --font-3xl: 2.4rem;
+  --font-4xl: 3.2rem;
+}
+
+.dark {
+  --bg: #000000;
+  --fg: #FAFAFA;
+  --accent: #00ff90;
+  --accent-light: #18c28d;
+  --muted: #999999;
+  --project-bg: #1a1a1a;
+  --project-hover-bg: #2c2c2c;
+}
+
+/* ==== Reset ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==== Global Layout ==== */
+html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  font-family: "TWK Lausanne", "Inter", sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==== Typography ==== */
+h1 {
+  font-size: clamp(var(--font-2xl), 6vw, var(--font-4xl));
+  font-weight: 600;
+  letter-spacing: -0.1rem;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(var(--font-xl), 3vw, var(--font-2xl));
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-size: var(--font-md);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==== Responsive Typography ==== */
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+  }
+
+  p,
+  a {
+    font-size: var(--font-base);
+  }
+
+  .continueBtn {
+    font-size: var(--font-sm);
+    padding: 0.4em 0.6em;
+  }
+}
+
+@media (max-width: 360px) {
+  .continueBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* ==== Custom Keyframes ==== */
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}

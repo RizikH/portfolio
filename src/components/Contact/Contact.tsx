@@ -1,10 +1,8 @@
 import React from 'react';
-import styles from '@/styles/components/contact.module.css';
-import Image from 'next/image';
-import emailIcon from '../../../public/icons/contact/email.png';
-import githubIcon from '../../../public/icons/contact/github.png';
-import linkedinIcon from '../../../public/icons/contact/linkedin.png';
-import resumeIcon from '../../../public/icons/contact/resume.png';
+import styles from '@/styles/components/contact.module.scss';
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { TiDocumentText } from "react-icons/ti";
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 
@@ -14,19 +12,26 @@ export default function Contact() {
 
     useGSAP(() => {
         if (!contactRef.current) return;
-
-        const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-
-        tl.fromTo(
-            contactRef.current,
-            { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
-        );
-    }, []);
+        gsap.fromTo(contactRef.current, {
+            opacity: 0,
+            y: 50,
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: contactRef.current,
+                start: 'top 100%',
+                toggleActions: 'play none none reverse',
+            },
+        });
+    }, [contactRef]);
+    
 
     return (
         <>
-            <section className={styles.contactSection} id="contact">
+            <section className={styles.contactSection} id="contact" ref={contactRef}>
                 <div className={styles.contactText}>
                     <h2 className={styles.contactTitle}>Connect with me</h2>
                     <p className={styles.contactDescription}>
@@ -34,53 +39,27 @@ export default function Contact() {
                     </p>
                 </div>
 
-                <div className={styles.contactContainer} ref={contactRef}>
+                <div className={styles.contactContainer}>
                     <a href="mailto:rizig.haddad.rh@gmail.com" className={styles.contactLink}>
                         <div className={styles.contactLinks}>
-                            <Image
-                                src={emailIcon}
-                                alt="Email"
-                                className={styles.contactIcon}
-                                width={50}
-                                height={50}
-                            />
+                            <MdEmail size={50} className={styles.icon} />
                         </div>
                         Email</a>
-                    <a href="https://github.com/RizikH" className={styles.contactLink}>
+                    <a href="https://github.com/RizikH" className={styles.contactLink} target="_blank" rel="noopener noreferrer">
                         <div className={styles.contactLinks}>
-                            <Image
-                                src={githubIcon}
-                                alt="Github"
-                                className={styles.contactIcon}
-                                width={50}
-                                height={50}
-                            />
+                            <FaGithub size={50} className={styles.icon} />
                         </div>
                         Github
                     </a>
-                    <a href="https://www.linkedin.com/in/rizik-haddad-075443266/" className={styles.contactLink}>
+                    <a href="https://www.linkedin.com/in/rizik-haddad-075443266/" className={styles.contactLink} target="_blank" rel="noopener noreferrer">
                         <div className={styles.contactLinks}>
-                            <Image
-                                src={linkedinIcon}
-                                alt="LinkedIn"
-                                className={styles.contactIcon}
-                                width={50}
-                                height={50}
-                            />
-
+                            <FaLinkedin size={50} className={styles.icon} />
                         </div>
                         LinkedIn
                     </a>
-                    <a href="/Docs/Full-Stack-Resume.pdf" className={styles.contactLink}>
+                    <a href="/Docs/Full-Stack-Resume.pdf" className={styles.contactLink} target="_blank" rel="noopener noreferrer">
                         <div className={styles.contactLinks}>
-                            <Image
-                                src={resumeIcon}
-                                alt="LinkedIn"
-                                className={styles.contactIcon}
-                                width={50}
-                                height={50}
-                            />
-
+                            <TiDocumentText size={50} className={styles.icon} />
                         </div>
                         Resume
                     </a>
