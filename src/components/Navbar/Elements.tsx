@@ -31,7 +31,7 @@ const Elements = ({
           Contact
         </Link>
       </li>
-      <li className={styles.navbarItem}>
+      <li className={styles.navbarItem} onClick={onLinkClick}>
         <ThemeToggle />
       </li>
     </ul>

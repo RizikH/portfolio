@@ -43,7 +43,7 @@ const Projects: React.FC = () => {
   }, [projectsRef]);
 
   return (
-    <div className={styles.projects} ref={projectsRef}>
+    <div id="projects" className={styles.projects} ref={projectsRef}>
       <h2 className='text-xl'>Selected Projects</h2>
       <div className={styles.projectsContainer}>
         {projectsData.Projects.map((project, i) => (

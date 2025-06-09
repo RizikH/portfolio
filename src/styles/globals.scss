@@ -11,6 +11,8 @@
   --accent: #00ff90;
   --accent-light: #18c28d;
   --muted: #666666;
+  --project-bg: #c3c3c3;
+  --project-hover-bg: #eaeaea;
 
   --font-sm: 0.7rem;
   --font-base: 0.9rem;
@@ -28,6 +30,8 @@
   --accent: #00ff90;
   --accent-light: #18c28d;
   --muted: #999999;
+  --project-bg: #1a1a1a;
+  --project-hover-bg: #2c2c2c;
 }
 
 /* ==== Reset ==== */
@@ -115,9 +119,11 @@ img {
   0% {
     background-position: 0% 0%;
   }
+
   50% {
     background-position: 100% 100%;
   }
+
   100% {
     background-position: 0% 0%;
   }

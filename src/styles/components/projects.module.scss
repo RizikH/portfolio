@@ -34,20 +34,34 @@
 
 
     .projectImage {
+        position: relative;
         width: 100%;
         height: auto;
-        box-shadow: 0 0 1rem var(--accent-light);
         overflow: hidden;
         border-radius: 1rem;
+        padding: 1rem;
+        background-color: var(--project-bg);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--project-hover-bg);
+        }
 
         svg {
             width: 100%;
             height: auto;
             object-fit: contain;
-            filter: brightness(70%);
             transition: all 0.3s ease;
             pointer-events: all;
-            cursor: pointer;
+            transform: translateY(20);
+
+            @media screen and (max-width: 768px) {
+                transform: none;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            padding: 0;
         }
     }
 
@@ -95,14 +109,19 @@
         /* LINKS */
         .projectLinks {
             display: flex;
-            flex-wrap: wrap;
             gap: 1.5rem;
             margin-top: 0.5rem;
 
             a {
-                font-size: var(--font-lg);
-                font-weight: 500;
-                width: fit-content;
+                box-shadow: 0 0 1px var(--fg);
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                background-color: var(--bg);
+
+                &:hover {
+                    color: var(--bg);
+                    background-color: var(--fg);
+                }
             }
         }
     }

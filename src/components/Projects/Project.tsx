@@ -3,6 +3,7 @@ import styles from "@/styles/components/projects.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Safari } from "@/components/magicui/safari";
+import { useIsMobile } from "@/components/Hooks/useIsMobile";
 
 type StackItem = {
   name: string;
@@ -26,6 +27,30 @@ type ProjectProps = {
 
 const Project: React.FC<ProjectProps> = ({ data, index }) => {
   const projectRef = React.useRef<HTMLDivElement>(null);
+  const projectImageRef = React.useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+
+  const handleMouseEnter = (): void => {
+    const svg = projectImageRef.current?.querySelector("svg");
+    if (svg) {
+      gsap.to(svg, {
+        y: 0,
+        duration: 0.01,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleMouseLeave = (): void => {
+    const svg = projectImageRef.current?.querySelector("svg");
+    if (svg) {
+      gsap.to(svg, {
+        y: 20,
+        duration: 0.01,
+        ease: "power2.out",
+      });
+    }
+  };
 
   useGSAP(() => {
     if (!projectRef.current) return;
@@ -51,13 +76,21 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
 
   return (
     <div className={styles.project} key={index} ref={projectRef}>
-      <div className={styles.projectImage}>
-        <Safari
-          url={data.url}
-          className={"size-full"}
-          imageSrc={data.imageSrc}
-        />
-      </div>
+      <a href={data.sourceCode} target="_blank" rel="noopener noreferrer">
+        <div
+          className={styles.projectImage}
+          ref={projectImageRef}
+          onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+          onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+        >
+
+          <Safari
+            url={data.url}
+            className={"size-full"}
+            imageSrc={data.imageSrc}
+          />
+        </div>
+      </a>
       <div className={styles.projectDetails}>
         <h3>{data.name}</h3>
         <p>{data.description}</p>
@@ -65,7 +98,7 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
           {data.stack.map((skill, i) => {
             const Icon = skill.icon;
             return (
-              <div key={i} className={styles.skill} title={skill.description}>
+              <div key={i} className={styles.skill} title={skill.name}>
                 <div className={styles.icon}>
                   <Icon size={30} />
                 </div>

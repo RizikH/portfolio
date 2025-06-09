@@ -36,11 +36,6 @@
         &:hover {
           color: var(--bg);
           background-color: var(--fg);
-
-          @media screen and (max-width: 768px) {
-            background-color: var(--bg);
-            color: var(--fg);
-          }
         }
       }
 
