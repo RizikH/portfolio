@@ -1,17 +1,18 @@
 # Portfolio Website
 
-This is a personal portfolio website built with Next.js, React, and Tailwind CSS. It presents personal projects, a short bio, and other relevant sections using custom animations and minimal design.
+This is a personal portfolio website built with Next.js, React, Tailwind CSS, and Sass. It presents personal projects, a short bio, and other relevant sections using custom animations and a minimal, responsive design.
 
 ## Overview
 
 - **Framework**: Next.js (App Router)
-- **Styling**: Tailwind CSS with global customizations
+- **Styling**: Tailwind CSS (utility-first) combined with Sass for custom styling
 - **Animation**: GSAP (GreenSock Animation Platform)
 - **Structure**:
   - `app/`: Core pages and layout files
   - `components/`: Reusable UI components organized by feature
   - `db/data.ts`: Static data source for projects
-  - `styles/`: Global styles and layout styling
+  - `styles/`: Global styles using both Tailwind CSS and Sass
+  - `public/`: Static assets such as images and textures
 
 ## Setup
 
@@ -29,16 +30,14 @@ This is a personal portfolio website built with Next.js, React, and Tailwind CSS
 
 ## Notes
 
-- Custom animations are handled through GSAP and ScrollTrigger.
-- Sections like Projects, About, and Hero are modular and located under `components/`.
-- The footer was styled entirely using Tailwind CSS to demonstrate utility-first styling without external libraries.
+- Animations are handled through GSAP and ScrollTrigger.
+- Main sections like Hero, About, and Projects are modular and located under `components/`.
+- Tailwind CSS is used for layout and utility styling, while Sass is used for structured custom styles and overrides.
+- Static project data is defined in `db/data.ts`.
 
 ## Deployment
 
-This project is deployed on vercel. 
-Check out the live link [Portfolio](https://rizikh.vercel.app)
+This project is deployed on Vercel.  
+Check out the live version: [Portfolio](https://rizikh.vercel.app)
 
 ---
-
-Inspired by [Muhammad AlDawahreh](https://m7mad.dev/)  
-GitHub: [MuhammadJaafer](https://github.com/MuhammadJaafer)
