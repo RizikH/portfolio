@@ -54,6 +54,7 @@
             transition: all 0.3s ease;
             pointer-events: all;
             transform: translateY(20);
+            will-change: transform;
 
             @media screen and (max-width: 768px) {
                 transform: none;

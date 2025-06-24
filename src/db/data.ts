@@ -21,6 +21,7 @@ import {
   SiSupabase,
   SiTailwindcss,
   SiTypescript,
+  SiSpring,
 } from "react-icons/si";
 
 import { AiOutlineOpenAI } from "react-icons/ai";
@@ -144,5 +145,24 @@ export const projectsData = {
       liveDemo: "",
       sourceCode: "https://github.com/RizikH/Portfolio",
     },
+    {
+      slug: "justseen",
+      name: "JustSeen",
+      url: "https://justseen.vercel.app",
+      imageSrc: "/Images/Projects/JustSeen/justseen-preview.jpg",
+      stack: [
+        { name: "Spring Boot", icon: SiSpring, description: "Java backend powerhouse" },
+        { name: "TypeScript", icon: SiTypescript, description: "JavaScript, but smarter" },
+        { name: "Next.js", icon: SiNextdotjs, description: "React on steroids" },
+        { name: "React.js", icon: FaReact, description: "UI meets logic" },
+        { name: "Supabase", icon: SiSupabase, description: "Postgres with superpowers" },
+        { name: "GSAP", icon: SiGreensock, description: "Animation, unleashed" },
+      ],
+      description:
+        "A full-stack movie app with custom auth, ratings, and movie saving. Powered by Spring Boot, Supabase, and TMDB. Clean UI, smooth animations, and secure cookie-based login.",
+      liveDemo: "https://justseen.vercel.app",
+      sourceCode: "https://github.com/RizikH/JustSeen",
+    },
+
   ],
 };
