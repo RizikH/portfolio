@@ -59,12 +59,12 @@ export const heroContent = {
   counters: [
     {
       label: "Projects",
-      count: 10,
+      count: 12,
       addition: "+",
     },
     {
-      label: "Years of Experience",
-      count: 2,
+      label: "Related Experience",
+      count: 5,
       addition: "+",
     },
     {
