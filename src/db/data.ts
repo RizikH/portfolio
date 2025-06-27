@@ -64,7 +64,7 @@ export const heroContent = {
     },
     {
       label: "Related Experience",
-      count: 5,
+      count: 3,
       addition: "+",
     },
     {
