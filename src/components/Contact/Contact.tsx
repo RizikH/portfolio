@@ -49,7 +49,7 @@ export default function Contact() {
                         <div className={styles.contactLinks}>
                             <FaGithub size={50} className={styles.icon} />
                         </div>
-                        Github
+                        GitHub
                     </a>
                     <a href="https://www.linkedin.com/in/rizik-haddad-075443266/" className={styles.contactLink} target="_blank" rel="noopener noreferrer">
                         <div className={styles.contactLinks}>
