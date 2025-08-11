@@ -10,7 +10,9 @@ This is a personal portfolio website built with Next.js, React, Tailwind CSS, an
 - **Structure**:
   - `app/`: Core pages and layout files
   - `components/`: Reusable UI components organized by feature
-  - `db/data.ts`: Static data source for projects
+  - `db/data.ts`: Static data for hero, about, skills, and projects
+  - `lib/`: Shared utilities
+  - `types/`: TypeScript definitions
   - `styles/`: Global styles using both Tailwind CSS and Sass
   - `public/`: Static assets such as images and textures
 
