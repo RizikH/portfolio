@@ -54,7 +54,7 @@ export default function Contact() {
                         <div className={styles.contactLinks}>
                             <FaGithub size={50} className={styles.icon} />
                         </div>
-                        Github
+                        GitHub
                     </a>
                     <a
                         href="https://www.linkedin.com/in/rizik-haddad-075443266/"
