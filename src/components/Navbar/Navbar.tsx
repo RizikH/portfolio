@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/components/navbar.module.scss";
 import { Link } from "react-scroll";
 import Elements from "./Elements";
@@ -10,14 +10,17 @@ import Elements from "./Elements";
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    document
+      .querySelector("main")?.style.setProperty("height", menuOpen ? "100vh" : "auto");
+  }, [menuOpen]);
+
   const toggleMenu = () => {
-    setMenuOpen(prev => !prev);
-    document.querySelector("main")?.style.setProperty("height", !menuOpen ? "100vh" : "auto");
+    setMenuOpen((prev) => !prev);
   };
 
   const closeMenu = () => {
     setMenuOpen(false);
-    document.querySelector("main")?.style.setProperty("height", "auto");
   };
 
   return (

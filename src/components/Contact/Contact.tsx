@@ -45,25 +45,40 @@ export default function Contact() {
                             <MdEmail size={50} className={styles.icon} />
                         </div>
                         Email</a>
-                    <a href="https://github.com/RizikH" className={styles.contactLink} target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://github.com/RizikH"
+                        className={styles.contactLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <div className={styles.contactLinks}>
                             <FaGithub size={50} className={styles.icon} />
                         </div>
-                        Github
+                        GitHub
                     </a>
-                    <a href="https://www.linkedin.com/in/rizik-haddad-075443266/" className={styles.contactLink} target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/rizik-haddad-075443266/"
+                        className={styles.contactLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <div className={styles.contactLinks}>
                             <FaLinkedin size={50} className={styles.icon} />
                         </div>
                         LinkedIn
                     </a>
-                    <a href="/Docs/Full-Stack-Resume.pdf" className={styles.contactLink} target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="/Docs/Full-Stack-Resume.pdf"
+                        className={styles.contactLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <div className={styles.contactLinks}>
                             <TiDocumentText size={50} className={styles.icon} />
                         </div>
                         Resume
                     </a>
-                </div >
+                </div>
             </section>
         </>
     );
