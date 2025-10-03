@@ -1,12 +1,13 @@
 .navContainer {
-  position: relative;
+  position: sticky;
   display: flex;
   flex-direction: column;
   width: 100%;
+  border-bottom: var(--fg) 1px solid;
 }
 
 .navbar {
-  position: relative;
+  position: sticky;
   display: flex;
   flex-direction: row;
   width: 100%;
