@@ -4,127 +4,379 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ==== Root Theme Variables ==== */
-:root {
-  --bg: #FAFAFA;
-  --fg: #000000;
-  --accent: #00ff90;
-  --accent-light: #18c28d;
-  --muted: #666666;
-  --project-bg: #c3c3c3;
-  --project-hover-bg: #eaeaea;
+/* ============================================
+   DESIGN SYSTEM - CSS VARIABLES
+   ============================================ */
 
-  --font-sm: 0.7rem;
-  --font-base: 0.9rem;
-  --font-md: 1rem;
-  --font-lg: 1.2rem;
-  --font-xl: 1.6rem;
-  --font-2xl: 2rem;
-  --font-3xl: 2.4rem;
-  --font-4xl: 3.2rem;
+:root {
+  /* === Colors === */
+  --bg: #f5f5f0;           /* Warm off-white (was #FAFAFA) */
+  --fg: #1a1a1a;           /* Soft black (was #000000) */
+  --accent: #00ff90;       /* Keep accent bright */
+  --accent-light: #18c28d;
+  --muted: #6b6b6b;        /* Slightly lighter muted (was #666666) */
+  --border: #d4d4d0;       /* Warmer border (was #e5e5e5) */
+  
+  /* Project-specific */
+  --project-bg: #e8e8e3;   /* Warmer project bg (was #f5f5f5) */
+  --project-hover-bg: #dcdcd7; /* Warmer hover (was #eaeaea) */
+  --card-bg: #fafaf5;      /* Slightly lighter than bg */
+  --card-border: var(--border);
+  --card-hover-bg: #efefea; /* Warmer card hover (was #f5f5f5) */
+
+  /* === Typography === */
+  --font-sm: 0.75rem;      /* 12px */
+  --font-base: 0.875rem;   /* 14px */
+  --font-md: 1rem;         /* 16px */
+  --font-lg: 1.125rem;     /* 18px */
+  --font-xl: 1.25rem;      /* 20px */
+  --font-2xl: 1.5rem;      /* 24px */
+  --font-3xl: 2rem;        /* 32px */
+  --font-4xl: 2.5rem;      /* 40px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* === Spacing System (consistent 8px base) === */
+  --space-xs: 0.5rem;      /* 8px */
+  --space-sm: 1rem;        /* 16px */
+  --space-md: 1.5rem;      /* 24px */
+  --space-lg: 2rem;        /* 32px */
+  --space-xl: 3rem;        /* 48px */
+  --space-2xl: 4rem;       /* 64px */
+  --space-3xl: 6rem;       /* 96px */
+  --space-4xl: 8rem;       /* 128px */
+
+  /* === Section Spacing (UNIFIED) === */
+  --section-gap: 6rem;           /* Gap between major sections */
+  --section-gap-mobile: 4rem;    /* Gap between sections on mobile */
+  --section-padding: 0;          /* Internal section padding */
+  --card-gap: 1rem;              /* Gap between cards */
+  --card-gap-mobile: 0.75rem;    /* Gap between cards on mobile */
+
+  /* === Layout === */
+  --container-max-width: 1200px;
+  --container-width-desktop: 50%;     /* Changed from 45% */
+  --container-width-tablet: 75%;
+  --container-width-mobile: 100%;
+  --container-padding: 2rem;
+  --container-padding-mobile: 1rem;
+
+  /* === Border Radius === */
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;    /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  --radius-full: 9999px;
+
+  /* === Shadows === */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* === Transitions === */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-base: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+
+  /* === Z-Index Scale === */
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
 }
 
+/* === Dark Theme === */
 .dark {
   --bg: #000000;
   --fg: #FAFAFA;
   --accent: #00ff90;
   --accent-light: #18c28d;
   --muted: #999999;
+  --border: #333333;
+  
   --project-bg: #1a1a1a;
   --project-hover-bg: #2c2c2c;
+  --card-bg: #0a0a0a;
+  --card-border: #222222;
+  --card-hover-bg: #1a1a1a;
 }
 
-/* ==== Reset ==== */
-* {
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================ */
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ==== Global Layout ==== */
 html {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
   width: 100%;
   font-family: "TWK Lausanne", "Inter", sans-serif;
+  font-size: var(--font-md);
+  line-height: 1.6;
   background-color: var(--bg);
   color: var(--fg);
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color var(--transition-base), 
+              color var(--transition-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ==== Typography ==== */
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--fg);
+  margin: 0;
+}
+
 h1 {
-  font-size: clamp(var(--font-2xl), 6vw, var(--font-4xl));
-  font-weight: 600;
-  letter-spacing: -0.1rem;
-  line-height: 1.1;
+  font-size: clamp(var(--font-2xl), 4vw, var(--font-4xl));
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: clamp(var(--font-xl), 3vw, var(--font-2xl));
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+  font-size: clamp(var(--font-xl), 3vw, var(--font-3xl));
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-size: clamp(var(--font-lg), 2vw, var(--font-2xl));
+  font-weight: var(--font-weight-semibold);
 }
 
 p {
   font-size: var(--font-md);
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--muted);
+  margin: 0;
 }
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Text sizes using design system */
+.text-xs { font-size: var(--font-sm); }
+.text-sm { font-size: var(--font-base); }
+.text-md { font-size: var(--font-md); }
+.text-lg { font-size: var(--font-lg); }
+.text-xl { font-size: var(--font-xl); }
+.text-2xl { font-size: var(--font-2xl); }
+.text-3xl { font-size: var(--font-3xl); }
+
+/* Section spacing utility */
+.section {
+  width: 100%;
+  padding: var(--section-padding);
+  margin-bottom: var(--section-gap);
+  opacity: 0;
+  will-change: opacity, transform;
+  
+  @media (max-width: 768px) {
+    margin-bottom: var(--section-gap-mobile);
+  }
+}
+
+/* Card styles */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  transition: all var(--transition-base);
+  
+  &:hover {
+    background-color: var(--card-hover-bg);
+  }
+}
+
+/* Button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-base);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--fg);
+  background-color: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    background-color: var(--fg);
+    color: var(--bg);
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Icon base */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* ============================================
+   IMAGES & MEDIA
+   ============================================ */
 
 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* ==== Responsive Typography ==== */
-@media (max-width: 480px) {
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Mobile: 0-640px */
+@media (max-width: 640px) {
   h1 {
-    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    font-size: clamp(var(--font-xl), 8vw, var(--font-2xl));
   }
 
   h2 {
-    font-size: clamp(1.25rem, 6vw, 1.75rem);
+    font-size: clamp(var(--font-lg), 6vw, var(--font-xl));
   }
 
-  p,
-  a {
+  p, a {
     font-size: var(--font-base);
   }
+}
 
-  .continueBtn {
-    font-size: var(--font-sm);
-    padding: 0.4em 0.6em;
+/* Tablet: 641-1024px */
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --section-gap: 5rem;
   }
 }
 
-@media (max-width: 360px) {
-  .continueBtn {
-    width: 100%;
-    text-align: center;
+/* Desktop: 1025px+ */
+@media (min-width: 1025px) {
+  :root {
+    --section-gap: 6rem;
   }
 }
 
+/* ============================================
+   ANIMATIONS
+   ============================================ */
 
-/* ==== Custom Keyframes ==== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes shine {
   0% {
     background-position: 0% 0%;
   }
-
   50% {
     background-position: 100% 100%;
   }
-
   100% {
     background-position: 0% 0%;
+  }
+}
+
+/* Fallback for no-JS */
+@media (prefers-reduced-motion: no-preference) {
+  .section {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --border: #000000;
+  }
+  
+  .dark {
+    --border: #ffffff;
   }
 }

@@ -68,7 +68,7 @@ export default function Contact() {
                         LinkedIn
                     </a>
                     <a
-                        href="/Docs/Full-Stack-Resume.pdf"
+                        href="/Docs/RizikHaddad_Backend_Resume.pdf"
                         className={styles.contactLink}
                         target="_blank"
                         rel="noopener noreferrer"

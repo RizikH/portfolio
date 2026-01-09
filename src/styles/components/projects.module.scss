@@ -1,134 +1,284 @@
+/* ============================================
+   PROJECTS SECTION
+   ============================================ */
+
 .projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  opacity: 0;
+  will-change: opacity, transform;
+
+  h2 {
+    margin-bottom: var(--space-2xl);
+  }
+
+  /* ========== Projects Container ========== */
+  .projectsContainer {
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
-    justify-content: flex-start;
-    align-items: flex-start;
+    gap: var(--space-3xl);
     width: 100%;
-    opacity: 0;
-    will-change: opacity, transform;
+  }
+}
+
+/* ============================================
+   PROJECT CARD
+   ============================================ */
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  width: 100%;
+
+  /* ========== Project Image/Preview ========== */
+  .projectImage {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+    background-color: var(--project-bg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+
+    &:hover {
+      background-color: var(--project-hover-bg);
+    }
+
+    /* Safari browser mockup or image */
+    svg {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      transition: transform var(--transition-base);
+      pointer-events: all;
+      will-change: transform;
+    }
+
+    /* Hover effect on desktop only */
+    @media (hover: hover) {
+      svg {
+        transform: translateY(20px);
+      }
+
+      &:hover svg {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  /* ========== Project Details ========== */
+  .projectDetails {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    width: 100%;
+
+    h3 {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--fg);
+      margin-bottom: var(--space-xs);
+    }
+
+    p {
+      font-size: var(--font-md);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ========== Stack Icons ========== */
+    .stackIcons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+      margin-top: var(--space-xs);
+
+      .skill {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: transform var(--transition-fast);
+
+        .icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: var(--fg);
+
+          svg {
+            width: 1.75rem;
+            height: 1.75rem;
+          }
+        }
+
+        &:hover {
+          transform: scale(1.15);
+        }
+
+        &:active {
+          transform: scale(1);
+        }
+      }
+    }
+
+    /* ========== Project Links ========== */
+    .projectLinks {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+      flex-wrap: wrap;
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        padding: var(--space-sm) var(--space-lg);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--fg);
+        background-color: var(--bg);
+        color: var(--fg);
+        font-size: var(--font-base);
+        font-weight: var(--font-weight-medium);
+        transition: all var(--transition-fast);
+
+        &:hover {
+          color: var(--bg);
+          background-color: var(--fg);
+          transform: translateY(-2px);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+/* ============================================
+   RESPONSIVE - PROJECTS
+   ============================================ */
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .projects {
+    .projectsContainer {
+      gap: var(--space-2xl);
+    }
+  }
+
+  .project {
+    gap: var(--space-lg);
+
+    .projectDetails {
+      h3 {
+        font-size: var(--font-xl);
+      }
+
+      p {
+        font-size: var(--font-base);
+      }
+
+      .stackIcons {
+        gap: var(--space-sm);
+
+        .skill .icon svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .projects {
+    align-items: center;
 
     h2 {
-        margin-bottom: 4rem;
+      margin-bottom: var(--space-xl);
     }
 
     .projectsContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 6rem;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
+      gap: var(--space-2xl);
     }
+  }
 
-    @media screen and (max-width: 768px) {
-        align-items: center;
-    }
-}
-
-/* PROJECT CARD */
-.project {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-    flex-wrap: nowrap;
-
-
+  .project {
     .projectImage {
-        position: relative;
-        width: 100%;
-        height: auto;
-        overflow: hidden;
-        border-radius: 1rem;
-        padding: 1rem;
-        background-color: var(--project-bg);
-        cursor: pointer;
+      padding: var(--space-sm);
+      border-radius: var(--radius-lg);
 
-        &:hover {
-            background-color: var(--project-hover-bg);
-        }
-
-        svg {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            transition: all 0.3s ease;
-            pointer-events: all;
-            transform: translateY(20);
-            will-change: transform;
-
-            @media screen and (max-width: 768px) {
-                transform: none;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            padding: 0;
-        }
+      /* Remove transform on mobile */
+      svg {
+        transform: none !important;
+      }
     }
 
     .projectDetails {
-        display: flex;
+      gap: var(--space-md);
+
+      h3 {
+        font-size: var(--font-lg);
+      }
+
+      p {
+        font-size: var(--font-base);
+      }
+
+      .stackIcons {
+        justify-content: flex-start;
+
+        .skill .icon svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+
+      .projectLinks {
+        gap: var(--space-sm);
+
+        a {
+          flex: 1;
+          justify-content: center;
+          min-width: 120px;
+        }
+      }
+    }
+  }
+}
+
+/* Small mobile */
+@media screen and (max-width: 480px) {
+  .project {
+    .projectDetails {
+      .stackIcons {
+        gap: var(--space-xs);
+
+        .skill .icon svg {
+          width: 1.25rem;
+          height: 1.25rem;
+        }
+      }
+
+      .projectLinks {
         flex-direction: column;
-        gap: 1rem;
         width: 100%;
 
-        h3 {
-            font-size: var(--font-xl);
-            font-weight: 600;
-            color: var(--fg);
-            margin-bottom: 0.5rem;
+        a {
+          width: 100%;
         }
-
-        /* STACK ICONS */
-        .stackIcons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: flex-start;
-
-            .skill {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-
-                &:hover {
-                    transform: scale(1.1);
-                }
-
-                .icon {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 100%;
-                    height: 100%;
-                    color: var(--fg);
-                }
-            }
-        }
-
-        /* LINKS */
-        .projectLinks {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 0.5rem;
-
-            a {
-                box-shadow: 0 0 1px var(--fg);
-                padding: 0.5rem 1rem;
-                border-radius: 0.5rem;
-                background-color: var(--bg);
-
-                &:hover {
-                    color: var(--bg);
-                    background-color: var(--fg);
-                }
-            }
-        }
+      }
     }
-
+  }
 }

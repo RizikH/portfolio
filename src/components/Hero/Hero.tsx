@@ -124,7 +124,7 @@ export default function Hero() {
                 <div className={styles.heroLinks} ref={linksRef}>
                     <button>
                         <a
-                            href="/Docs/Full-Stack-Resume.pdf"
+                            href="/Docs/RizikHaddad_Backend_Resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.ctaButton}

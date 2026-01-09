@@ -1,27 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/components/projects.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Safari } from "@/components/magicui/safari";
 import { useIsMobile } from "@/components/Hooks/useIsMobile";
-
-type StackItem = {
-  name: string;
-  icon: React.ComponentType<{ size?: number }>;
-  description: string;
-};
+import { ProjectModal } from "@/components/ProjectModal/ProjectModal";
+import type { ProjectData } from "@/db/data";
 
 type ProjectProps = {
-  data: {
-    slug: string;
-    name: string;
-    url: string;
-    imageSrc: string;
-    stack: StackItem[];
-    description: string;
-    liveDemo: string;
-    sourceCode: string;
-  };
+  data: ProjectData;
   index: number;
 };
 
@@ -29,6 +16,7 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
   const projectRef = React.useRef<HTMLDivElement>(null);
   const projectImageRef = React.useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleMouseEnter = (): void => {
     const svg = projectImageRef.current?.querySelector("svg");
@@ -50,6 +38,14 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
         ease: "power2.out",
       });
     }
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   useGSAP(() => {
@@ -75,51 +71,80 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
   }, [projectRef]);
 
   return (
-    <div className={styles.project} key={index} ref={projectRef}>
-      <a href={data.sourceCode} target="_blank" rel="noopener noreferrer">
+    <>
+      <div className={styles.project} key={index} ref={projectRef}>
+        {/* Project Image - Clickable */}
         <div
           className={styles.projectImage}
           ref={projectImageRef}
           onMouseEnter={!isMobile ? handleMouseEnter : undefined}
           onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+          onClick={handleOpenModal}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleOpenModal();
+            }
+          }}
+          aria-label={`View details for ${data.name}`}
         >
-
           <Safari
             url={data.url}
             className={"size-full"}
             imageSrc={data.imageSrc}
           />
         </div>
-      </a>
-      <div className={styles.projectDetails}>
-        <h3>{data.name}</h3>
-        <p>{data.description}</p>
-        <div className={styles.stackIcons}>
-          {data.stack.map((skill, i) => {
-            const Icon = skill.icon;
-            return (
-              <div key={i} className={styles.skill} title={skill.name}>
-                <div className={styles.icon}>
-                  <Icon size={30} />
+
+        {/* Project Details */}
+        <div className={styles.projectDetails}>
+          <h3>{data.name}</h3>
+          <p>{data.description}</p>
+          
+          {/* Stack Icons */}
+          <div className={styles.stackIcons}>
+            {data.stack.map((skill, i) => {
+              const Icon = skill.icon;
+              return (
+                <div key={i} className={styles.skill} title={skill.name}>
+                  <div className={styles.icon}>
+                    <Icon size={30} />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className={styles.projectLinks}>
-          {data.liveDemo && (
-            <a href={data.liveDemo} target="_blank" rel="noopener noreferrer">
-              Live Demo
-            </a>
-          )}
-          {data.sourceCode && (
-            <a href={data.sourceCode} target="_blank" rel="noopener noreferrer">
-              Source Code
-            </a>
-          )}
+              );
+            })}
+          </div>
+
+          {/* Project Links */}
+          <div className={styles.projectLinks}>
+            <button
+              onClick={handleOpenModal}
+              className={styles.detailsButton}
+            >
+              View Details
+            </button>
+            {data.liveDemo && (
+              <a href={data.liveDemo} target="_blank" rel="noopener noreferrer">
+                Live Demo
+              </a>
+            )}
+            {data.sourceCode && (
+              <a href={data.sourceCode} target="_blank" rel="noopener noreferrer">
+                Source Code
+              </a>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Modal */}
+      <ProjectModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        project={data}
+      />
+    </>
   );
 };
 

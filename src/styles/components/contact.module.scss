@@ -1,53 +1,167 @@
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+
 .contactSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-2xl) 0;
+  gap: var(--space-2xl);
+  opacity: 0;
+  will-change: opacity, transform;
+
+  /* ========== Contact Text ========== */
+  .contactText {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+    gap: var(--space-sm);
     width: 100%;
-    height: fit-content;
-    padding: 3rem 0;    
-    gap: 3rem;
-    opacity: 0;
-    will-change: opacity, transform;
 
-    .contactText {
+    .contactTitle {
+      font-size: var(--font-2xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--fg);
+    }
+
+    .contactDescription {
+      font-size: var(--font-md);
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+  }
+
+  /* ========== Contact Links Container ========== */
+  .contactContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2xl);
+    width: 100%;
+
+    /* Individual contact link */
+    .contactLink {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      text-align: center;
+      font-size: var(--font-base);
+      color: var(--muted);
+      font-weight: var(--font-weight-medium);
+      transition: all var(--transition-base);
+      cursor: pointer;
+
+      .contactLinks {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        height: fit-content;
+        padding: var(--space-md);
+        border-radius: var(--radius-md);
+        background-color: var(--card-bg);
+        border: 1px solid var(--card-border);
+        transition: all var(--transition-base);
+
+        .icon {
+          color: var(--fg);
+          transition: transform var(--transition-base);
+        }
+      }
+
+      &:hover {
+        color: var(--fg);
+
+        .contactLinks {
+          background-color: var(--card-hover-bg);
+          border-color: var(--fg);
+          transform: translateY(-4px);
+
+          .icon {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      &:active .contactLinks {
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+/* ============================================
+   RESPONSIVE - CONTACT
+   ============================================ */
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .contactSection {
+    padding: var(--space-xl) 0;
+
+    .contactContainer {
+      gap: var(--space-xl);
+    }
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .contactSection {
+    padding: var(--space-lg) 0;
+    gap: var(--space-xl);
+
+    .contactText {
+      .contactTitle {
+        font-size: var(--font-xl);
+      }
+
+      .contactDescription {
+        font-size: var(--font-base);
+      }
     }
 
     .contactContainer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        height: fit-content;
+      gap: var(--space-lg);
+      justify-content: space-around;
 
-        a {
-            text-align: center;
+      .contactLink {
+        gap: var(--space-xs);
 
-            .contactLinks {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
+        .contactLinks {
+          padding: var(--space-sm);
 
-            &:hover {
-                svg{
-                    transform: translateY(-0.2rem);
-                }
-            }
+          .icon {
+            font-size: 2rem;
+          }
         }
-
+      }
     }
+  }
+}
 
-    @media screen and (max-width: 768px) {
-        .contactContainer {
-            gap: 2rem;
+/* Small mobile */
+@media screen and (max-width: 480px) {
+  .contactSection {
+    .contactContainer {
+      gap: var(--space-md);
+
+      .contactLink {
+        font-size: var(--font-sm);
+
+        .contactLinks .icon {
+          font-size: 1.75rem;
         }
+      }
     }
+  }
 }
