@@ -5,7 +5,6 @@ import {
   FaJava,
   FaJsSquare,
   FaReact,
-  FaSass,
   FaAws,
 } from "react-icons/fa";
 
