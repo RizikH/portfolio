@@ -342,13 +342,6 @@ img {
   }
 }
 
-/* Fallback for no-JS */
-@media (prefers-reduced-motion: no-preference) {
-  .section {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-}
-
 /* ============================================
    ACCESSIBILITY
    ============================================ */
