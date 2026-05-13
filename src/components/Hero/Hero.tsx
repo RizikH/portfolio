@@ -1,90 +1,14 @@
 'use client';
 
-import { useRef } from "react";
 import styles from "@/styles/components/hero.module.scss";
 import Image from "next/image";
 import { heroContent } from "@/db/data";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail, MdOutlinePlace } from "react-icons/md";
 
 export default function Hero() {
-    const heroRef = useRef<HTMLDivElement>(null);
-    const headerFocusRef = useRef<HTMLDivElement>(null);
-    const headerFocusContentRef = useRef<HTMLDivElement>(null);
-    const linksRef = useRef<HTMLDivElement>(null);
-    const counterDivRef = useRef<HTMLDivElement>(null);
-
-    const handleMouseEnter = () => {
-        gsap.to(headerFocusContentRef.current, {
-            y: "-1.6rem",
-            duration: 0.8,
-            ease: "power2.out",
-        });
-    };
-
-    const handleMouseLeave = () => {
-        gsap.to(headerFocusContentRef.current, {
-            y: "0rem",
-            duration: 0.8,
-            ease: "power2.out",
-        });
-    };
-
-    useGSAP(() => {
-        if (!heroRef.current || !linksRef.current || !counterDivRef.current) return;
-
-        const tl = gsap.timeline({});
-        const linksTargets = linksRef.current.querySelectorAll("button, a");
-
-        tl.fromTo(
-            heroRef.current,
-            { opacity: 0, y: 40 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: "power2.out",
-            }
-        ).fromTo(
-            linksTargets,
-            { opacity: 0, x: -40 },
-            {
-                opacity: 1,
-                x: 0,
-                duration: 0.5,
-                ease: "power2.out",
-                stagger: 0.2,
-            },
-            "-=0.5"
-        );
-
-        const counterDivTargets = counterDivRef.current.querySelectorAll(
-            `.${styles.counter} .${styles.counterNumber}`
-        );
-
-        counterDivTargets.forEach((target) => {
-            const endValue = parseInt(target.textContent || "0", 10);
-
-            // Reset to 0
-            target.textContent = "0";
-
-            const counterObj = { val: 0 };
-            gsap.to(counterObj, {
-                val: endValue,
-                duration: 2,
-                ease: "circ.out",
-                delay: 0.3,
-                onUpdate: () => {
-                    target.textContent = Math.floor(counterObj.val).toString();
-                },
-            });
-        });
-    }, { scope: heroRef });
-
     return (
-        <section id="hero" className={styles.hero} ref={heroRef}>
+        <section id="hero" className={styles.hero}>
             <section className={styles.heroContent}>
                 <div className={styles.header}>
                     <Image
@@ -101,16 +25,10 @@ export default function Hero() {
                                 <MdOutlinePlace className={styles.locationIcon} />
                                 <p>{heroContent.location}</p>
                             </div>
-                            <div
-                                className={styles.headerFocus}
-                                ref={headerFocusRef}
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
-                            >
+                            <div className={styles.headerFocus}>
                                 <div className={styles.circle}></div>
-                                <div className={styles.focusContent} ref={headerFocusContentRef}>
+                                <div className={styles.focusContent}>
                                     <p>{heroContent.job}</p>
-                                    <p>{heroContent.focus}</p>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +39,7 @@ export default function Hero() {
                     <p>{heroContent.description}</p>
                 </div>
 
-                <div className={styles.heroLinks} ref={linksRef}>
+                <div className={styles.heroLinks}>
                     <button>
                         <a
                             href="/Docs/RizikHaddad_Resume.pdf"
@@ -152,7 +70,7 @@ export default function Hero() {
                 </div>
             </section>
 
-            <section className={styles.counterDiv} ref={counterDivRef}>
+            <section className={styles.counterDiv}>
                 {heroContent.counters.map((counter, index) => (
                     <div className={styles.counter} key={index}>
                         <div className='flex gap-1 items-center'>

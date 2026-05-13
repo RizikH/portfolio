@@ -3,35 +3,12 @@ import styles from '@/styles/components/contact.module.scss';
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { TiDocumentText } from "react-icons/ti";
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
 
 
 export default function Contact() {
-    const contactRef = React.useRef<HTMLDivElement>(null);
-
-    useGSAP(() => {
-        if (!contactRef.current) return;
-        gsap.fromTo(contactRef.current, {
-            opacity: 0,
-            y: 50,
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: contactRef.current,
-                start: 'top 100%',
-                toggleActions: 'play none none reverse',
-            },
-        });
-    }, [contactRef]);
-    
-
     return (
         <>
-            <section className={styles.contactSection} id="contact" ref={contactRef}>
+            <section className={styles.contactSection} id="contact">
                 <div className={styles.contactText}>
                     <h2 className={styles.contactTitle}>Connect with me</h2>
                     <p className={styles.contactDescription}>

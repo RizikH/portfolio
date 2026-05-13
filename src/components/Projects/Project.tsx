@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import styles from "@/styles/components/projects.module.scss";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { Safari } from "@/components/magicui/safari";
 import { Iphone } from "@/components/ui/iphone";
-import { useIsMobile } from "@/components/Hooks/useIsMobile";
 import { ProjectModal } from "@/components/ProjectModal/ProjectModal";
 import type { ProjectData } from "@/db/data";
 
@@ -14,28 +11,7 @@ type ProjectProps = {
 };
 
 const Project: React.FC<ProjectProps> = ({ data, index }) => {
-  const projectRef = React.useRef<HTMLDivElement>(null);
-  const projectImageRef = React.useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleMouseEnter = (): void => {
-    const target = data.wrapperType === "iphone"
-      ? projectImageRef.current?.querySelector("[data-phone-wrapper]")
-      : projectImageRef.current?.querySelector("svg");
-    if (target) {
-      gsap.to(target, { y: 0, duration: 0.01, ease: "power2.out" });
-    }
-  };
-
-  const handleMouseLeave = (): void => {
-    const target = data.wrapperType === "iphone"
-      ? projectImageRef.current?.querySelector("[data-phone-wrapper]")
-      : projectImageRef.current?.querySelector("svg");
-    if (target) {
-      gsap.to(target, { y: 20, duration: 0.01, ease: "power2.out" });
-    }
-  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -45,46 +21,13 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
     setIsModalOpen(false);
   };
 
-  useGSAP(() => {
-    if (!projectRef.current) return;
-
-    const targets = projectRef.current.querySelectorAll(
-      `.${styles.projectImage}, .${styles.projectDetails}`
-    );
-
-    targets.forEach((target) => {
-      gsap.from(target, {
-        opacity: 0,
-        y: 50,
-        duration: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: target,
-          start: "top 100%",
-          toggleActions: "play none none reverse",
-        },
-      });
-    });
-
-    const phoneWrapper = projectRef.current.querySelector("[data-phone-wrapper]");
-    if (phoneWrapper) {
-      gsap.set(phoneWrapper, { y: 20 });
-    } else {
-      const svg = projectRef.current.querySelector("svg");
-      if (svg) gsap.set(svg, { y: 20 });
-    }
-  }, [projectRef]);
-
   return (
     <>
-      <div className={styles.project} key={index} ref={projectRef}>
+      <div className={styles.project} key={index}>
         {/* Project Image - Clickable */}
         <div
           className={styles.projectImage}
           style={data.wrapperType === "iphone" ? { width: "fit-content", margin: "0 auto" } : undefined}
-          ref={projectImageRef}
-          onMouseEnter={!isMobile ? handleMouseEnter : undefined}
-          onMouseLeave={!isMobile ? handleMouseLeave : undefined}
           onClick={handleOpenModal}
           role="button"
           tabIndex={0}

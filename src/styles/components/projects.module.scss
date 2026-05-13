@@ -8,8 +8,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  opacity: 0;
-  will-change: opacity, transform;
 
   h2 {
     margin-bottom: var(--space-2xl);
@@ -46,7 +44,6 @@
     padding: var(--space-lg);
     background-color: var(--project-bg);
     cursor: pointer;
-    transition: all var(--transition-base);
 
     &:hover {
       background-color: var(--project-hover-bg);
@@ -58,7 +55,6 @@
       height: auto;
       object-fit: contain;
       pointer-events: all;
-      will-change: transform;
     }
   }
 
@@ -95,7 +91,6 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        transition: transform var(--transition-fast);
 
         .icon {
           display: flex;
@@ -107,14 +102,6 @@
             width: 1.75rem;
             height: 1.75rem;
           }
-        }
-
-        &:hover {
-          transform: scale(1.15);
-        }
-
-        &:active {
-          transform: scale(1);
         }
       }
     }
@@ -136,16 +123,10 @@
         color: var(--fg);
         font-size: var(--font-base);
         font-weight: var(--font-weight-medium);
-        transition: all var(--transition-fast);
 
         &:hover {
           color: var(--bg);
           background-color: var(--fg);
-          transform: translateY(-2px);
-        }
-
-        &:active {
-          transform: translateY(0);
         }
       }
     }

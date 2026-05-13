@@ -8,8 +8,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  opacity: 0;
-  will-change: opacity, transform;
 
   /* Section heading inherits from global h2 styles */
 
@@ -50,7 +48,6 @@
           color: var(--fg);
           border: 1px solid var(--card-border);
           cursor: pointer;
-          transition: all var(--transition-base);
           min-height: 100px;
 
           .skill {
@@ -66,7 +63,6 @@
               align-items: center;
               justify-content: center;
               color: var(--fg);
-              transition: transform var(--transition-base);
 
               svg {
                 width: 2rem;
@@ -82,23 +78,13 @@
             }
           }
 
-          /* Hover effects using theme variables */
           &:hover {
             background-color: var(--card-hover-bg);
             border-color: var(--fg);
-            transform: translateY(-2px);
-
-            .icon {
-              transform: translateY(-2px);
-            }
 
             span {
               color: var(--fg);
             }
-          }
-
-          &:active {
-            transform: translateY(0);
           }
         }
       }
