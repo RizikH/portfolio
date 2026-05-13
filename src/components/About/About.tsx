@@ -2,10 +2,7 @@
 
 import React from 'react';
 import styles from '@/styles/components/about.module.scss';
-
-import {
-  skills,
-} from '@/db/data';
+import { skills } from '@/db/data';
 
 export default function About() {
   return (
