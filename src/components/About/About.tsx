@@ -8,7 +8,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import {
   skills,
-  certification,
 } from '@/db/data';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,7 +30,7 @@ export default function About() {
         toggleActions: 'play none none reverse',
       },
     });
-    const targets = aboutSectionRef.current?.querySelectorAll(`h2, .${styles.skillsContainer}, .${styles.skillsSection}, .${styles.certificationBadge}`);
+    const targets = aboutSectionRef.current?.querySelectorAll(`h2, .${styles.skillsContainer}, .${styles.skillsSection}`);
     if (!targets) return;
 
     targets.forEach((target) => {
@@ -75,19 +74,7 @@ export default function About() {
         ))}
       </section>
 
-      {/* Certification Badge */}
-      <div className={styles.certificationBadge}>
-        <div className={styles.certIcon}>{certification.icon}</div>
-        <div className={styles.certContent}>
-          <p className={styles.certText}>
-            <span className={styles.certStatus}>Currently pursuing:</span>{' '}
-            <strong>{certification.title}</strong>
-          </p>
-          <p className={styles.certMeta}>
-            {certification.provider} • Expected {certification.expectedCompletion}
-          </p>
-        </div>
-      </div>
+
     </section>
   );
 }

@@ -57,20 +57,8 @@
       width: 100%;
       height: auto;
       object-fit: contain;
-      transition: transform var(--transition-base);
       pointer-events: all;
       will-change: transform;
-    }
-
-    /* Hover effect on desktop only */
-    @media (hover: hover) {
-      svg {
-        transform: translateY(20px);
-      }
-
-      &:hover svg {
-        transform: translateY(0);
-      }
     }
   }
 

@@ -3,6 +3,7 @@ import styles from "@/styles/components/projects.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Safari } from "@/components/magicui/safari";
+import { Iphone } from "@/components/ui/iphone";
 import { useIsMobile } from "@/components/Hooks/useIsMobile";
 import { ProjectModal } from "@/components/ProjectModal/ProjectModal";
 import type { ProjectData } from "@/db/data";
@@ -19,24 +20,20 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleMouseEnter = (): void => {
-    const svg = projectImageRef.current?.querySelector("svg");
-    if (svg) {
-      gsap.to(svg, {
-        y: 0,
-        duration: 0.01,
-        ease: "power2.out",
-      });
+    const target = data.wrapperType === "iphone"
+      ? projectImageRef.current?.querySelector("[data-phone-wrapper]")
+      : projectImageRef.current?.querySelector("svg");
+    if (target) {
+      gsap.to(target, { y: 0, duration: 0.01, ease: "power2.out" });
     }
   };
 
   const handleMouseLeave = (): void => {
-    const svg = projectImageRef.current?.querySelector("svg");
-    if (svg) {
-      gsap.to(svg, {
-        y: 20,
-        duration: 0.01,
-        ease: "power2.out",
-      });
+    const target = data.wrapperType === "iphone"
+      ? projectImageRef.current?.querySelector("[data-phone-wrapper]")
+      : projectImageRef.current?.querySelector("svg");
+    if (target) {
+      gsap.to(target, { y: 20, duration: 0.01, ease: "power2.out" });
     }
   };
 
@@ -68,6 +65,14 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
         },
       });
     });
+
+    const phoneWrapper = projectRef.current.querySelector("[data-phone-wrapper]");
+    if (phoneWrapper) {
+      gsap.set(phoneWrapper, { y: 20 });
+    } else {
+      const svg = projectRef.current.querySelector("svg");
+      if (svg) gsap.set(svg, { y: 20 });
+    }
   }, [projectRef]);
 
   return (
@@ -76,6 +81,7 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
         {/* Project Image - Clickable */}
         <div
           className={styles.projectImage}
+          style={data.wrapperType === "iphone" ? { width: "fit-content", margin: "0 auto" } : undefined}
           ref={projectImageRef}
           onMouseEnter={!isMobile ? handleMouseEnter : undefined}
           onMouseLeave={!isMobile ? handleMouseLeave : undefined}
@@ -90,11 +96,13 @@ const Project: React.FC<ProjectProps> = ({ data, index }) => {
           }}
           aria-label={`View details for ${data.name}`}
         >
-          <Safari
-            url={data.url}
-            className={"size-full"}
-            imageSrc={data.imageSrc}
-          />
+          {data.wrapperType === "iphone" ? (
+            <div data-phone-wrapper style={{ display: "inline-block" }}>
+              <Iphone src={data.imageSrc} style={{ height: "60vh", maxHeight: "550px", width: "auto" }} />
+            </div>
+          ) : (
+            <Safari url={data.url} className={"size-full"} imageSrc={data.imageSrc} />
+          )}
         </div>
 
         {/* Project Details */}

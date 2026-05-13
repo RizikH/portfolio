@@ -22,6 +22,9 @@ import {
   SiSpring,
   SiDotnet,
   SiMysql,
+  SiFlutter,
+  SiDocker,
+  SiSharp,
 } from "react-icons/si";
 
 import { AiOutlineOpenAI } from "react-icons/ai";
@@ -48,6 +51,7 @@ export interface ProjectData {
   tagline: string;
   url: string;
   imageSrc: string;
+  wrapperType?: "safari" | "iphone";
   stack: StackItem[];
   description: string;
   overview: string;
@@ -55,6 +59,7 @@ export interface ProjectData {
   challenges: Challenge[];
   liveDemo: string;
   sourceCode: string;
+  sourceCodeAlt?: string;
 }
 
 /* ============================================
@@ -68,18 +73,18 @@ export const heroContent = {
   focus: "Full-Stack",
   image: "/Images/hero.jpg",
   description: `
-    Backend-focused Full Stack Developer specializing in secure, scalable application architecture. 
-    Expertise in Spring Boot, Node.js/Express, REST API design, and database systems. 
-    Passionate about building robust server-side solutions with clean, maintainable code.
+    Full stack developer with shipped backends across .NET 10 and Node.js/Express stacks, both live in production.
+    B.S. Computer Science, 2025. Proficient in Spring Boot, PostgreSQL, React/Next.js, and Flutter.
+    Experience integrating LLM APIs (OpenAI, Claude) into production workflows.
   `,
   cta: {
     text: "View Resume",
-    link: "/Docs/Full-Stack-Resume.pdf",
+    link: "/Docs/RizikHaddad_Resume.pdf",
   },
   counters: [
     {
       label: "Projects",
-      count: 2,
+      count: 3,
       addition: "",
     },
     {
@@ -110,7 +115,7 @@ export const aboutFocus = {
   paragraphs: [
     "I specialize in backend development with Spring Boot and Node.js, focusing on REST API design, JWT authentication, and database architecture. I'm also proficient in modern frontend technologies like React and Next.js.",
     "My approach emphasizes security-first development, implementing proper authentication flows, granular permission systems, and following the principle of least privilege.",
-    "Currently pursuing the Microsoft Back-End Developer Professional Certificate and actively seeking full-time opportunities where I can contribute to building scalable, production-ready applications.",
+    "Actively seeking full-time opportunities where I can contribute to building scalable, production-ready applications.",
   ],
 };
 
@@ -126,9 +131,11 @@ export const skills = [
       { name: "Express.js", icon: SiExpress, description: "Web application framework for Node.js" },
       { name: "Spring Boot", icon: SiSpringboot, description: "Java-based framework for enterprise applications" },
       { name: "Java", icon: FaJava, description: "Object-oriented programming language" },
-      { name: ".NET", icon: SiDotnet, description: "Microsoft framework for building applications" },
+      { name: ".NET", icon: SiDotnet, description: "ASP.NET Core Web API framework" },
+      { name: "C#", icon: SiSharp, description: "Primary language for .NET development" },
       { name: "PostgreSQL", icon: SiPostgresql, description: "Advanced relational database" },
       { name: "MySQL", icon: SiMysql, description: "Popular relational database" },
+      { name: "Docker", icon: SiDocker, description: "Containerization for local dev environments" },
     ],
   },
   {
@@ -138,23 +145,18 @@ export const skills = [
       { name: "Next.js", icon: SiNextdotjs, description: "React framework for production applications" },
       { name: "TypeScript", icon: SiTypescript, description: "Typed superset of JavaScript" },
       { name: "JavaScript", icon: FaJsSquare, description: "Core programming language for web development" },
+      { name: "Flutter", icon: SiFlutter, description: "Cross-platform mobile framework (iOS/Android)" },
       { name: "HTML5", icon: FaHtml5, description: "Markup language for web content" },
       { name: "CSS3", icon: FaCss3Alt, description: "Styling language for web design" },
     ],
   },
+  {
+    title: "AI & APIs",
+    skills: [
+      { name: "OpenAI API", icon: AiOutlineOpenAI, description: "GPT-4/4o integration with structured output parsing" },
+    ],
+  },
 ];
-
-/* ============================================
-   CERTIFICATION
-   ============================================ */
-
-export const certification = {
-  title: "Microsoft Back-End Developer Professional Certificate",
-  provider: "Coursera",
-  status: "In Progress",
-  expectedCompletion: "April 2026",
-  icon: "📜",
-};
 
 /* ============================================
    PROJECTS
@@ -253,6 +255,61 @@ export const projectsData = {
       ],
       liveDemo: "https://justseen.vercel.app",
       sourceCode: "https://github.com/RizikH/JustSeen",
+    },
+    {
+      slug: "appops",
+      name: "AppOps",
+      tagline: "Job Application Tracker: Production .NET 10 API + Flutter Mobile",
+      url: "",
+      imageSrc: "/Images/Projects/AppOps/appops-preview.jpg",
+      wrapperType: "iphone",
+      stack: [
+        { name: "C#", icon: SiSharp, description: ".NET backend language" },
+        { name: ".NET 10", icon: SiDotnet, description: "ASP.NET Core Web API" },
+        { name: "PostgreSQL", icon: SiPostgresql, description: "Database" },
+        { name: "Flutter", icon: SiFlutter, description: "iOS/Android mobile frontend" },
+        { name: "Docker", icon: SiDocker, description: "Local dev containerization" },
+      ],
+      description:
+        "Two independent production projects connected via REST API: a .NET 10 Clean Architecture backend on Azure and a Flutter mobile app (iOS/Android). Backend includes JWT rotation, IP rate limiting, per-user data isolation at the DbContext level, and 119 tests (87 running against real PostgreSQL via Testcontainers).",
+      overview:
+        "AppOps is two independent, production-grade projects connected via REST API. The .NET 10 backend follows Clean Architecture (API, Application, Domain, Infrastructure) with a 5-table PostgreSQL 16 schema on Supabase, deployed to Azure App Service. The API exposes three resource types (Job Applications, Notes, and Reminders), all with full CRUD and per-user isolation enforced at the DbContext level. Cross-user access returns 404 not 403 to avoid leaking resource existence. Domain entities encapsulate business logic: status transitions auto-generate TimelineEvents. Test suite: 32 pure domain unit tests + 87 integration tests using Testcontainers (real PostgreSQL) and WebApplicationFactory. The Flutter frontend (iOS/Android) connects via a token interceptor, stores JWTs in the secure enclave (Keychain/Keystore), and caches applications locally with AES-encrypted Hive storage.",
+      features: [
+        "Two independent repos: ASP.NET Core Web API (C#/.NET 10) + Flutter mobile app (iOS/Android), connected via REST",
+        "4-layer Clean Architecture (API, Application, Domain, Infrastructure) with Result Pattern, Factory Pattern, and interface-driven DI throughout",
+        "JWT auth: 15-min access tokens + 30-day refresh tokens with rotation on refresh and explicit revocation on logout",
+        "IP rate limiting via AspNetCoreRateLimit: login 5/min, register 3/min, refresh 10/min, all other endpoints 60/min",
+        "Per-user data isolation enforced at DbContext level; cross-user access returns 404 not 403 to avoid leaking resource existence",
+        "3 REST resource types with full CRUD: Job Applications, Notes, and Reminders, all scoped to the authenticated user",
+        "119-test suite: 32 domain unit tests (pure C#, no infrastructure) + 87 integration tests (Testcontainers real PostgreSQL + WebApplicationFactory)",
+        "Flutter: 3-tier storage (SecureStorage for JWTs, SharedPreferences for prefs, AES-encrypted Hive cache); token interceptor handles proactive + reactive refresh",
+      ],
+      challenges: [
+        {
+          title: "JWT Token Rotation & Revocation",
+          problem:
+            "Needed a seamless auth experience where users stay logged in long-term without compromising security. Short-lived access tokens alone would require frequent re-login, but long-lived tokens are a security risk.",
+          solution:
+            "Implemented a two-token system: 15-minute access tokens (signed HMAC-SHA256) paired with 30-day refresh tokens stored in the database. On refresh, the old token is revoked and a new one issued (rotation). Explicit revocation on logout marks the token in the DB, preventing reuse. The Flutter TokenInterceptor handles both proactive (pre-expiry) and reactive (401 response) refresh transparently.",
+        },
+        {
+          title: "Multi-User Data Isolation",
+          problem:
+            "Every database query needed to be scoped to the authenticated user's ID without relying on per-endpoint filtering. A single missed filter would expose another user's data.",
+          solution:
+            "Enforced isolation at the DbContext level using IHttpContextAccessor to extract the authenticated UserId from JWT claims. All queries are automatically filtered by this ID, meaning no per-query filter is needed and no controller can accidentally return cross-user data.",
+        },
+        {
+          title: "Clean Architecture Layer Boundaries",
+          problem:
+            "Maintaining strict separation between Domain, Application, Infrastructure, and API layers while keeping the codebase practical for a solo project, balancing over-engineering vs. maintainability.",
+          solution:
+            "Used the Repository and Service Layer patterns with interface-driven DI throughout. Domain entities encapsulate business logic (e.g., JobApplication status transitions auto-generate TimelineEvents). DTOs in the Application layer prevent domain leakage into the HTTP layer.",
+        },
+      ],
+      liveDemo: "",
+      sourceCode: "https://github.com/RizikH/AppOps",
+      sourceCodeAlt: "https://github.com/RizikH/AppOps-Mobile",
     },
   ] as ProjectData[],
 };

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ProjectData } from '@/db/data';
 import styles from '@/styles/components/project-modal.module.scss';
 import { IoClose } from 'react-icons/io5';
+import { Iphone } from '@/components/ui/iphone';
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -67,14 +68,20 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ isOpen, onClose, pro
                 <div className={styles.modalContent}>
                   {/* Hero Image */}
                   <div className={styles.heroImageContainer}>
-                    <Image
-                      src={project.imageSrc}
-                      alt={`${project.name} preview`}
-                      width={1200}
-                      height={675}
-                      className={styles.heroImage}
-                      priority
-                    />
+                    {project.wrapperType === "iphone" ? (
+                      <div style={{ display: "flex", justifyContent: "center", padding: "var(--space-lg)" }}>
+                        <Iphone src={project.imageSrc} style={{ height: "60vh", maxHeight: "500px", width: "auto" }} />
+                      </div>
+                    ) : (
+                      <Image
+                        src={project.imageSrc}
+                        alt={`${project.name} preview`}
+                        width={1200}
+                        height={675}
+                        className={styles.heroImage}
+                        priority
+                      />
+                    )}
                   </div>
 
                   {/* Overview */}
@@ -166,6 +173,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ isOpen, onClose, pro
                         className={`${styles.ctaButton} ${styles.secondaryButton}`}
                       >
                         View Code
+                      </a>
+                    )}
+                    {project.sourceCodeAlt && (
+                      <a
+                        href={project.sourceCodeAlt}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${styles.ctaButton} ${styles.secondaryButton}`}
+                      >
+                        Mobile App
                       </a>
                     )}
                   </div>
