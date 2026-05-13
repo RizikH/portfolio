@@ -56,6 +56,7 @@
       font-size: var(--font-base);
       color: var(--muted);
       font-weight: var(--font-weight-medium);
+      transition: color 120ms;
       cursor: pointer;
 
       .contactLinks {
@@ -67,6 +68,7 @@
         border-radius: var(--radius-md);
         background-color: var(--card-bg);
         border: 1px solid var(--card-border);
+        transition: background-color 120ms, border-color 120ms;
 
         .icon {
           color: var(--fg);

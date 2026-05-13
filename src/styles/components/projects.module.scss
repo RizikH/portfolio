@@ -44,6 +44,7 @@
     padding: var(--space-lg);
     background-color: var(--project-bg);
     cursor: pointer;
+    transition: background-color 120ms;
 
     &:hover {
       background-color: var(--project-hover-bg);
@@ -123,6 +124,7 @@
         color: var(--fg);
         font-size: var(--font-base);
         font-weight: var(--font-weight-medium);
+        transition: background-color 120ms, color 120ms;
 
         &:hover {
           color: var(--bg);

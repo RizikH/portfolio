@@ -32,6 +32,7 @@
   a {
     color: var(--fg);
     text-decoration: none;
+    transition: opacity 120ms;
 
     &:hover {
       opacity: 0.7;
@@ -70,6 +71,7 @@
       font-weight: var(--font-weight-medium);
       color: var(--muted);
       text-decoration: none;
+      transition: color 120ms;
 
       &:hover {
         color: var(--fg);
